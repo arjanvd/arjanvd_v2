@@ -1,0 +1,50 @@
+.u-article-body {
+  
+  .full {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .half {
+    width: 100%;
+
+    @include bp(medium) { 
+      width: 50%; 
+      justify-self: end;
+      margin-left: vr(4); 
+    }
+/*
+    &--left {
+      @extend .half;
+      float: left;
+      margin-right: vr(4);
+    }
+
+    &--right {
+      @extend .half;
+      float: right;
+      margin-left: vr(4);
+    }*/
+  }
+
+  .third {
+    width: 33%;
+
+    &--left {
+      @extend .third;
+      float: left;
+      margin-right: vr(4);
+    }
+
+    &--right {
+      @extend .third;
+      float: right;
+      margin-left: vr(4);
+    }
+  }
+  
+}

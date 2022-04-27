@@ -1,0 +1,11 @@
+.t-date {
+    @include vr-type($ms-up2);
+    font-family: $font-sans;
+    font-weight: 700;
+    color: var(--c-text--10000);
+
+    &--alt {
+        @extend .t-date;
+        @include vr-type($ms-base);
+    }
+}

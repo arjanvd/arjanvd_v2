@@ -1,0 +1,40 @@
+/* -------------------------------- 
+Title: Switch
+Descr: Custom ON/OFF checkbox toggle
+Original from: https://codyhouse.co/blog/post/dark-light-switch-css-javascript
+Modified styling based on: https://dev.to/shadowscientist/making-a-dark-mode-switch-lightly-249j and then I just did it myself
+-------------------------------- */
+
+.o-switch__label {
+	transform: translate(-50%, -50%);
+}
+
+.o-switch__label > .o-switch__input {
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 5;
+	opacity: 0;
+}
+
+.o-switch {
+	position: relative;
+	width: vr(3);
+	height: vr(3);
+}
+
+.o-switch .o-switch__moon, 
+.o-switch .o-switch__sun {
+	position: absolute;
+	left: 0; top:0;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	& svg { fill: var(--c-text--10); }
+}
+
+.o-switch .o-switch__moon { opacity: 1; }
+.o-switch .o-switch__sun { opacity: 0; }
+
+.o-switch__input:checked ~ .o-switch .o-switch__moon { opacity: 0; }
+.o-switch__input:checked ~ .o-switch .o-switch__sun { opacity: 1; }

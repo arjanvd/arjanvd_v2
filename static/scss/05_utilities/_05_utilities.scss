@@ -1,0 +1,17 @@
+/* ----------------------------------------------------------------------------
+
+UTILITIES
+
+===============================================================================
+05_utilities/_utilities.scss
+-------------------------------------------------------------------------------
+
+This file is imported in site.scss, so all files in the 05_utilities folder are 
+imported. WARNING: do not import files in the 03_objects folder directly into 
+site.scss
+
+---------------------------------------------------------------------------- */
+
+@import "js";
+@import "width";
+//@import "syntax";

@@ -1,0 +1,17 @@
+.l-nav {
+  margin-bottom: vr(4);
+  
+  ul {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  
+  li {
+    margin-right: vr(3);
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+}

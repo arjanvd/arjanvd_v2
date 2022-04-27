@@ -1,0 +1,8 @@
+.t-pagination {
+    @include vr-type($ms-down1);
+    font-family: $font-sans;
+    font-weight: 700; 
+    color: var(--c-text--1000);
+    text-transform: uppercase;
+    letter-spacing: .2em;
+  }

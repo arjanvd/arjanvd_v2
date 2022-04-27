@@ -1,0 +1,14 @@
+.t-article-list {
+    list-style: decimal;
+
+    &__item {
+        margin-bottom: 0;
+    }
+    
+    &__item::marker {
+        font-family: $font-sans;
+        @include vr-type($ms-down1);
+        font-weight: 700;
+        color: var(--c-text--10000);
+    }
+}

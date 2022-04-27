@@ -1,0 +1,34 @@
+.t-link {
+
+    &--article-data {
+        font-family: $font-sans;
+        color: var(--c-text--100);
+        border-bottom: 1px solid var(--c-link--data);
+
+        &:hover {
+            color: var(--c-link--data--alt);
+            border-color: var(--c-text--100);
+        }
+    }
+    &--artikelen {
+        &:hover  { background: var(--bg-link); }
+    }
+    &--image {
+        display: block;
+        //box-shadow: 0 12px 8px -8px var(--c-shadow);
+        border: 1px solid var(--c-border);
+        margin-bottom: vr(3);
+        transition: all .3s ease-in-out;
+        &:hover { opacity: 0.7; }
+        @include bp(x-small) { margin-bottom: 0; }
+    }
+    &--snippers {
+        &:hover { background: var(--bg-link--alt); }
+    }
+
+    &--gallery {
+        transition: all .3s ease-in-out;
+        &:hover { opacity: 0.7; }
+    }
+    
+}

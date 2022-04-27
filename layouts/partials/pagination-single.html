@@ -1,0 +1,29 @@
+<div class="l-pagination t-pagination mt-10">
+   
+  {{if .PrevInSection}}
+  <a rel="prev" href="{{ .PrevInSection.Permalink }}">
+      <i class="o-icon--nav"> <!-- tabler-icons.io chevron-left -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="15 6 9 12 15 18"/></svg>
+      </i>
+  </a>
+  {{ else }}
+  <div class="l-pagination__item">
+    <i class="o-icon--nav"> <!-- tabler-icons.io chevron-left -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="15 6 9 12 15 18"/></svg>
+    </i>
+  </div>
+  {{ end }}
+  {{if .NextInSection}}
+  <a rel="next" href="{{ .NextInSection.Permalink }}"> 
+      <i class="o-icon--nav"> <!-- tabler-icons.io chevron-right -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="9 6 15 12 9 18"/></svg>
+      </i>
+  </a>
+  {{ else }}
+  <div class="l-pagination__item">
+    <i class="o-icon--nav"> <!-- tabler-icons.io chevron-right -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="9 6 15 12 9 18"/></svg>
+    </i>
+  </div>
+  {{ end }}
+</div>

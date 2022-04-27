@@ -1,0 +1,18 @@
+.o-article {
+    &--link {
+        margin-bottom: vr(4);
+        max-width: var(--max-width);
+    }
+
+    &--prikkel__content {
+        background-color: $stormy-bay-l60;
+        border-bottom-right-radius: vr(1);
+        border-bottom-left-radius: vr(1);
+        box-shadow: var(--c-shadow);
+    }
+
+    &--prikkel__body {
+        padding: vr(1) vr(2) vr(2);
+    }
+    
+}

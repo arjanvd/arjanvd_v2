@@ -1,0 +1,146 @@
+/* -------------------------------- 
+Title: Switch
+Descr: Custom ON/OFF checkbox toggle
+Original from: https://codyhouse.co/blog/post/dark-light-switch-css-javascript
+Modified styling based on: https://dev.to/shadowscientist/making-a-dark-mode-switch-lightly-249j
+-------------------------------- */
+
+
+.switch__label {
+	--c:translate(-50%,-50%);
+	transform:var(--c);
+}
+
+.switch{
+	position:relative;
+	//left:0;top:0;
+	width: vr(3);
+	height: vr(3);
+}
+
+.switch__label > .switch__input{
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:5;
+	opacity:0;
+}
+
+.switch span{ // sun border
+    display:block;
+	position:absolute;
+	left:50%;
+	top:50%;
+	transform:var(--c);
+	border-radius:50%;
+	width:80%;//70%;
+	height:80%;//70%;
+	background: radial-gradient(circle, $black-l40, $black-l50);
+	//border:vr(.25) solid $black-l50;
+	transition:all ease 0.15s;
+}
+
+.switch div{
+	position:absolute;
+	left:0;top:0;
+	width:100%;
+	height:100%;
+}
+
+.switch div::before, .switch div::after{ // sun rays
+	content:" ";
+	display:block;
+	position:absolute;
+	left:50%;
+	top:50%;
+	transform:var(--c);
+	background: $black-l50;
+	width:12%;
+	height:130%;
+	border-radius:10px;
+	transition:all ease 0.15s;
+}
+
+.switch div:nth-child(1)::before{
+	transform:var(--c) rotate(0deg);
+}
+
+.switch div:nth-child(1)::after{
+	transform:var(--c) rotate(45deg); /*45deg increment each time*/
+}
+
+.switch div:nth-child(2)::before{
+	transform:var(--c) rotate(90deg);
+}
+
+.switch div:nth-child(2)::after{
+	transform:var(--c) rotate(135deg);
+}
+
+.switch::before, .switch::after{ // sun inside
+	content:" ";
+	position:absolute;
+	left:50%;
+	top:50%;
+	transform:var(--c);
+	border-radius:50%;
+	background:radial-gradient(circle #{vr(3)}, $black-l20, $black-l50);//var(--c-text--1000);
+	transition:all ease 0.15s;
+}
+
+.switch::before{
+	width:0%;
+    height:0%;
+}
+
+.switch::after{ // sun width
+	width:70%;
+	height:70%;
+}
+
+.switch__input:checked ~ .switch span{ // moon and border
+    width:90%; /*width change*/
+    height:90%; /*height change*/
+    background: radial-gradient(circle #{vr(3)}, $black-l30, $black-l50); /*color change*/
+    //border:vr(.25) solid blue;//$black-l50; 
+	
+    /*we get a full moon*/
+}
+
+.switch__input:checked ~ .switch div::before,
+.switch__input:checked ~ .switch div::after{
+    height:50%; /*we hide the sun-rays*/
+}
+
+.switch__input:checked ~ .switch::before{ // moon small crater 
+    left:70%;
+    top:70%;
+    width:25%;
+    height:25%;
+    background:radial-gradient(circle, $black-l50, $black-l40);
+    z-index:10;
+    } 
+
+.switch__input:checked ~ .switch::after{ // moon large crater
+    left:30%;
+    top:30%;
+    width:35%;
+    height:35%;
+    background:radial-gradient(circle, $black-l50, $black-l40);
+	z-index:10;
+} 
+/*
+.switch__input:checked ~ .switch::after{ /*we hide the sun outline*//*
+    width:0%;
+    height:0%;
+}*/
+
+.switch__input:not(:checked) ~ .switch{
+    transform:rotate(180deg);
+    transition:all ease 2.15s 0.1s;
+}
+
+.switch__input:checked ~ .switch{
+    transform:rotate(360deg);
+    transition:all ease 2.15s 0.1s;
+}

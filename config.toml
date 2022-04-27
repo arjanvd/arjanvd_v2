@@ -1,0 +1,58 @@
+baseURL = '/'
+languageCode = 'nl-nl'
+title = 'arjanvd.nl'
+
+#Syntax highlighting
+  pygmentsCodefences = true
+  pygmentsCodefencesGuessSyntax = true
+  pygmentsUseClasses = true
+  pygmentsOptions = "linenos=table"
+
+summaryLength = 20
+
+[permalinks]
+  blog = "/:section/:title/"
+  foto = "/:section/:title/"
+
+[taxonomies]
+  tag = "tags"
+  serie = "series"
+  medium = "media"
+
+[params]
+  description = "Ik ben vader van Hugo en Mats, man van Martine, Rotterdammer(t), wielrenner, rijksambtenaar, D66'er. Ik probeer alles en kan best veel. Op deze plek schrijf ik met onregelmatige tussenpozen over van alles en nog wat. En ik post nog wel eens een foto. In de beperking toont zich de meester? Welnee."
+
+  [[menu.main]]
+    identifier = "blog"
+    name = "Blog"
+    title = "blog section"
+    url = "/blog/"
+    weight = 10
+    
+  [[menu.main]]
+    identifier = "foto"
+    name = "Foto's"
+    title = "photo section"
+    url = "/foto/"
+    weight = 20
+
+  [[menu.main]]
+    identifier = "link"
+    name = "Links"
+    title = "links section"
+    url = "/link/"
+    weight = 30
+
+[[menu.main]]
+    identifier = "prikkel"
+    name = "Prikkels"
+    title = "prikkel section"
+    url = "/prikkel/"
+    weight = 40      
+ 
+  [[menu.main]]
+    identifier = "over-mij"
+    name = "Over mij"
+    title = "about section"
+    url = "/over-mij/"
+    weight = 50  

@@ -1,0 +1,20 @@
+.t-intro {
+    font-family: $font-sans;
+
+    p { margin-bottom: vr(4); }
+    a {
+        color: var(--c-link--text);
+        border-bottom: 1px solid var(--c-link--text--alt);
+    
+        &:hover {
+          color: var(--c-link--text--alt);
+          border-bottom: 1px solid var(--c-link--text);
+        }
+    }
+
+    &--alt {
+    @include vr-type($ms-up1, 5);
+    font-family: $font-sans;
+    //font-style: italic;
+    }
+}

@@ -1,0 +1,88 @@
+// Special typography, building on '05_typography/_text.scss'
+// In alphabetical order.
+
+.t-article-list {
+  list-style: decimal;
+  
+  &__bullet {
+    list-style: circle;
+  }
+
+  &__number {
+    font-family: $font-sans;
+    @include vr-type($ms-down1);
+    font-weight: 400;
+    color: var(--c-text);
+  }
+}
+  
+.t-figcaption {
+  font-family: $font-sans;
+  @include vr-type ($ms-down1, 3);
+  color: var(--c-text--70);
+  
+  &--img-container {
+    font-family: $font-sans;
+    @include vr-type ($ms-down1, 3);
+    color: $white;
+  }
+}
+
+.t-intro p { @include vr-type($ms-up1, 5); }
+
+.t-pagination {
+  @include vr-type($ms-down1);
+  font-family: $font-sans;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+
+  a {
+    color: $primary; 
+  
+    &:hover { color: color($primary, 2); } 
+    &:visited, &:active { color: color($primary, 4); } 
+  
+  }
+}
+
+.t-para-link {
+  color: $primary; 
+  
+  &:hover { 
+    color: color($primary, 2); 
+  } 
+  &:visited, &:active { color: color($primary, 2); } 
+}
+
+.t-permlink {
+  color: var(--c-text);
+
+  &:hover { color: var(--c-text--80); }
+  &:focus, &:visited { color: var(--c-text--70); }
+}
+
+.t-tags-link {
+  color: $primary; 
+  //font-weight: bold;
+  //background-color: color($secondary, 5);
+  //padding: 0.1em;
+ // border-radius: 0.05em;
+  
+  &:hover { 
+    color: color($primary, 2); 
+   // background-color: color($secondary, 7);
+  } 
+  &:visited, &:active { color: color($primary, 2); } 
+}
+
+.t-tag__item {
+  &--count {
+    color: $primary;
+    font-family: $font-sans;
+    font-weight: bold;
+    @include vr-type($ms-down1);
+    }
+  &--dot {
+    color: var(--c-text--40);
+  }
+}

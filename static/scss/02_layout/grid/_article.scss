@@ -1,0 +1,21 @@
+.g-article {
+
+    &--prikkel {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: minmax(10px, 1fr) min-content;
+
+        &__body-top {
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+        }
+        &__body-bottom {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+        }
+        &__image {
+            grid-column: 2 / 3;
+            grid-row: 1 / 3;
+        }
+    }
+}

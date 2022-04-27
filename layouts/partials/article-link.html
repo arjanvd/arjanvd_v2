@@ -1,0 +1,10 @@
+<div class="mb-4 o-article--link">
+    <a href="{{ $.Param "link" }}">
+        <span class="mr-2 t-article-data--link-date">
+            {{ partial "date-numbers.html" . }} 
+        </span> 
+        <span><em>{{ $.Param "link_title" }}</em></span> 
+        <span class="mr-2">{{ $.Param "text" | markdownify }}</span> 
+        <span class="t-article-data--link-source">{{ $.Param "source_url" }}</span>
+    </a>
+</div>

@@ -1,0 +1,35 @@
+{{ define "main" }}
+
+<main itemscope itemtype="https://schema.org/SearchResultsPage">
+<meta itemprop="mainEntityOfPage" content="{{ .Permalink }}">
+
+<h2 class="t-h-taxonomy mb-8">
+  <i class="o-icon--tag"><!-- tabler-icons.io tag -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8.5" cy="8.5" r="1" fill="currentColor"/><path d="M4 7v3.859c0 .537.213 1.052.593 1.432l8.116 8.116a2.025 2.025 0 0 0 2.864 0l4.834-4.834a2.025 2.025 0 0 0 0-2.864L12.29 4.593A2.025 2.025 0 0 0 10.859 4H7a3 3 0 0 0-3 3z"/></svg>
+  </i>      
+  {{ .Title }}
+</h2>
+
+{{ range (.Data.Pages.GroupBy "Section") }}
+  {{ if eq .Key "blog" }}
+  <h3 class="t-h-tag mb-2">Blog</h3>
+  <ol class="mb-6 t-article-list" reversed>
+    {{ range .Pages.ByDate.Reverse }}
+    <li class="t-article-list__item">
+      {{ partial "blog-in-list.html" . }}
+    </li>
+    {{ end }}
+  </ol>
+    {{ else if eq .Key "foto" }}
+    <h3 class="t-h-tag mb-2">Foto's</h3>
+    <div class="g-photo-grid mb-10">
+      {{ range .Pages.ByDate.Reverse }} 
+        {{ partial "photo-in-list.html" . }}
+      {{ end }}
+    </div>
+  {{ end }}
+{{ end }}
+
+</main>
+
+{{ end }}

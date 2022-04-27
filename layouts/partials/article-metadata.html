@@ -1,0 +1,6 @@
+{{ partial "date-name.html" . }}
+{{ if (eq .Section "blog") }} &middot;
+<span itemprop="wordCount">{{ .WordCount }} woorden</span>
+{{ end }} &middot;
+<a href="{{ .Permalink }}" class="t-para-link">&para;</a>
+

@@ -1,0 +1,63 @@
+{{ partial "head.html" . }}
+
+<body itemscope itemtype="https://schema.org/WebPage"><!-- HIER EEN IF/ELSE-STATEMENT VOOR WELKE itemtype ELKE PAGINA HEEFT -->
+
+{{ if and ( eq .Section "foto" ) ( eq .Kind "section" ) }}
+  <div class="g-wrapper--large">
+{{ else if and ( eq .Section "prikkel" ) ( eq .Kind "section" ) }}
+  <div class="g-wrapper--large">
+{{ else if ( eq .Kind "taxonomy" ) }}
+  <div class="g-wrapper--large">
+{{ else }}
+  <div class="g-wrapper--small">
+{{ end }}
+    {{ partial "header.html" . }}
+    
+    {{ block "main" . }}{{ end }}
+    
+    {{ partial "footer.html" . }}
+      
+  </div> <!-- /div.l-wrapper -->
+
+</body>
+
+<svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+  <linearGradient id="gradient-light" x2="1" y2="1">
+    <stop offset="0%" stop-color="#383e56" />
+    <stop offset="100%" stop-color="#fb743e" />
+  </linearGradient>
+</svg>
+<svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+  <linearGradient id="gradient-dark" x2="1" y2="1">
+    <stop offset="0%" stop-color="#7f9cb3" />
+    <stop offset="100%" stop-color="#F0A500" />
+  </linearGradient>
+</svg>
+
+<!-- copied from https://codepen.io/ananyaneogi/pen/zXZyMP -->
+<script>
+const toggleSwitch = document.getElementById("switch");
+const currentTheme = localStorage.getItem('theme');
+
+if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+  
+    if (currentTheme === 'dark') {
+        toggleSwitch.checked = true;
+    }
+}
+
+function switchTheme(e) {
+    if (e.target.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+    }
+    else {        document.documentElement.setAttribute('data-theme', 'light');
+          localStorage.setItem('theme', 'light');
+    }    
+}
+
+toggleSwitch.addEventListener('change', switchTheme, false);
+  </script>
+<script src="{{ "js/a11y-dialog.min.js" | relURL }}"></script>
+</html>

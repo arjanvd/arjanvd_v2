@@ -1,0 +1,79 @@
+
+:root {
+// background
+  --bg-body: linear-gradient(25deg,hsl(105, 20%, 96%) 0%,hsl(108deg 21% 96%) 5%,hsl(110deg 20% 96%) 10%,hsl(113deg 19% 96%) 14%,hsl(116deg 19% 96%) 19%,hsl(119deg 18% 96%) 24%,hsl(122deg 17% 96%) 29%,hsl(125deg 17% 96%) 33%,hsl(128deg 17% 96%) 38%,hsl(131deg 17% 96%) 43%,hsl(133deg 17% 96%) 48%,hsl(136deg 17% 95%) 52%,hsl(138deg 17% 95%) 57%,hsl(141deg 17% 95%) 62%,hsl(143deg 17% 95%) 67%,hsl(145deg 17% 95%) 71%,hsl(147deg 17% 95%) 76%,hsl(149deg 17% 95%) 81%,hsl(151deg 17% 95%) 86%,hsl(153deg 17% 95%) 90%,hsl(154deg 17% 94%) 95%,hsl(156, 16%, 94%) 100%); // from $nature-l60 to $stormy-bay-l60 LAB on https://www.joshwcomeau.com/gradient-generator/ 
+  --bg-bq: linear-gradient(160deg,hsl(153deg 16% 89%) 0%,hsl(153deg 16% 89%) 5%,hsl(153deg 16% 89%) 10%,hsl(154deg 16% 90%) 14%,hsl(154deg 16% 90%) 19%,hsl(154deg 16% 90%) 24%,hsl(154deg 16% 90%) 29%,hsl(154deg 16% 91%) 33%,hsl(154deg 16% 91%) 38%,hsl(154deg 16% 91%) 43%,hsl(154deg 16% 91%) 48%,hsl(154deg 16% 92%) 52%,hsl(154deg 16% 92%) 57%,hsl(155deg 16% 92%) 62%,hsl(155deg 17% 92%) 67%,hsl(155deg 17% 93%) 71%,hsl(155deg 17% 93%) 76%,hsl(155deg 17% 93%) 81%,hsl(155deg 17% 94%) 86%,hsl(156deg 17% 94%) 90%,hsl(156deg 17% 94%) 95%,hsl(156deg 17% 94%) 100%); // from $stormy-bay-l50 to $stormy-bay-l50-l60 LAB on https://www.joshwcomeau.com/gradient-generator/
+  --bg-code: #{$olive-l70};
+  --bg-code--inline: #{$olive-l70};
+  --bg-link: #{$pink-l60};
+  --bg-link--alt: #{$pink-l80};
+
+// color 
+  --c-logo: #{$dark-and-stormy};
+  --c-border: #{$dark-and-stormy-l50};
+  --c-border--light: #{$olive-l70};
+
+  --c-text: #{$dark-and-stormy-d50};
+  --c-text--10: #{$dark-and-stormy-d20};
+  --c-text--100: #{$dark-and-stormy};
+  --c-text--1000: #{$dark-and-stormy-l30};
+  --c-text--10000: #{$dark-and-stormy-l50};
+  
+  --c-text--alt: #{$stormy-bay-d50};
+  --c-text--alt--10: #{$stormy-bay-d40};
+  --c-text--alt--100: #{$stormy-bay-d30};
+  --c-text--alt--1000: #{$olive-l30};
+
+  --c-link--text: #{$carrot-d20};
+  --c-link--text--alt: #{$carrot-d50};
+  --c-link--data: #{$carrot};
+  --c-link--data--alt: #{$carrot-l10};
+
+  --c-heading: #{$dark-and-stormy};
+  --c-heading--10: #{$brown-l10};
+  
+// special
+  --gradient-icon: url(#gradient-light) white;
+  --p-side: #{vr(6)};
+  --max-width: 32rem;
+  --c-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+  --c-shadow--inset: rgba(0, 0, 0, 0.07) 0px 1px 2px inset, rgba(0, 0, 0, 0.07) 0px 2px 4px inset, rgba(0, 0, 0, 0.07) 0px 4px 8px inset, rgba(0, 0, 0, 0.07) 0px 8px 16px inset, rgba(0, 0, 0, 0.07) 0px 16px 32px inset, rgba(0, 0, 0, 0.07) 0px 32px 64px inset;
+  --c-focus: 0px 0px 5px 0px rgba(251, 116, 62, 0.9)
+}
+
+[data-theme="dark"] {
+// background
+  --bg-body: linear-gradient(25deg, hsl(213deg 100% 6%) 0%, hsl(216deg 82% 7%) 5%, hsl(217deg 75% 7%) 10%, hsl(218deg 69% 7%) 14%, hsl(219deg 65% 7%) 19%, hsl(219deg 60% 7%) 24%, hsl(220deg 57% 7%) 29%, hsl(221deg 53% 7%) 33%, hsl(221deg 50% 7%) 38%, hsl(222deg 46% 7%) 43%, hsl(222deg 43% 7%) 48%, hsl(223deg 40% 7%) 52%, hsl(223deg 37% 7%) 57%, hsl(224deg 33% 7%) 62%, hsl(224deg 30% 7%) 67%, hsl(225deg 26% 7%) 71%, hsl(225deg 23% 7%) 76%, hsl(226deg 19% 7%) 81%, hsl(226deg 15% 6%) 86%, hsl(227deg 10% 6%) 90%, hsl(227deg 5% 6%) 95%, hsl(0deg 0% 6%) 100%); //linear-gradient(to right top, #082032, #111b29, #131721, #131318, #0f0f0f);
+  --bg-bq: linear-gradient(rgba(16, 16, 16, 0.8), rgba(16, 16, 16, 0.8)), url(images/SVG/daks-blue-loden.svg) repeat 0 0;
+  --bg-code: #{$olive-d70};
+  --bg-code--inline: #{$olive-d70};
+  --bg-link: #{$pink-d30};
+  --bg-link--alt: #{$pink-d50};
+
+// color
+  --c-border: #{$olive-d60};
+  --c-border--light: #{$olive-d70};
+
+  --c-text: #{$olive-l60};
+  --c-text--10: #{$white-d10};
+  --c-text--100: #{$white-d30};
+  --c-text--1000: #{$white-d40};
+
+  --c-text--alt: #{$olive-d20};
+  --c-text--alt--1000: #{$olive-d70};
+  
+  --c-link--text: #{$pink-l50};
+  --c-link--text--alt: #{$pink-l80};
+  --c-link--data: #{$blue-d30};
+  --c-link--data--alt: #{$blue};
+  
+  --c-heading: #{$brown-l60};
+  --c-heading--10: #{$brown-l50};
+  
+  // special
+  --c-shadow: #000000;
+  --gradient-icon: url(#gradient-dark) black;
+}
+
+
+

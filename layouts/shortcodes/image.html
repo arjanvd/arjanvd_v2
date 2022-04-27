@@ -1,0 +1,7 @@
+{{ $img := $.Page.Resources.GetMatch "media/**" }}
+{{ $src_url := $img.Permalink }}
+{{ $src := $src_url | strings.TrimRight ".jpg"}}
+    <img itemprop="url" class="o-image {{ with .Get "class" }}{{ . }}{{ end }}"
+        src="{{ $src }}.jpg" alt="{{ .Get "alt" }}"
+        />
+    

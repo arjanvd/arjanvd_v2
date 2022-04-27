@@ -1,0 +1,26 @@
+.t-nav {
+    li {
+      font-family: $font-sans;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    
+    a {
+      @include vr-type($ms-base, 6);
+      color: var(--c-text--alt--10);
+      transition: color .3s ease-in-out;
+  
+        &:hover { 
+          color: var(--c-text--alt--100); 
+          border-bottom: 2px solid $carrot-d20;
+        }
+      }
+      
+    .active { 
+      color: var(--c-text--alt); 
+      border-bottom: 2px solid $carrot; 
+    }
+    
+    
+  
+  }

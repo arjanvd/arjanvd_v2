@@ -1,0 +1,14 @@
++++
+
+title = "Bouwen aan Sydney"
+date = 2018-10-24T22:58:23+02:00
+series = [ "snippers" ]
+tags = [ "lego", "sydney" ] 
+draft = false
+summary = "Lego is altijd leuk. Maar het is extra leuk om iets van Lego te bouwen waar je net bent geweest."
+
++++
+
+{{< image-lightbox--rect src="IMG_1027.jpg" id="181024_1" alt="Skyline van Sydney, gemaakt van Lego" figcaption="" >}}
+
+Lego is altijd leuk. Maar het is extra leuk om iets van Lego te bouwen waar je net bent geweest. (En Mats heeft heel goed meegeholpen.)	

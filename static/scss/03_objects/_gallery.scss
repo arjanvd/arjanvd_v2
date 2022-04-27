@@ -1,0 +1,25 @@
+.o-gallery {
+  display: grid;
+  grid-gap: vr(2);
+  margin-bottom: vr(4);
+  & + div { margin-bottom: vr(4); margin-top: -#{vr(2)}; }
+  
+  &--sq-2 {
+    @extend .o-gallery;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  &--sq-3 {
+    @extend .o-gallery;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  &--sq-4 {
+    @extend .o-gallery;
+    grid-template-columns: repeat(2, 1fr);
+
+    @include bp(medium) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+}
+

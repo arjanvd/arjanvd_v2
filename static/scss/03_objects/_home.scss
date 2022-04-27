@@ -1,0 +1,28 @@
+.o-home {
+    &--box {
+        box-shadow: var(--c-shadow);
+        position: relative;
+        border-radius: vr(1);
+        padding: vr(6) 0;
+
+        &:hover { box-shadow: none; }
+        &:active { box-shadow: var(--c-shadow--inset); }
+        
+        &__1 {
+            @extend .o-home--box;
+            background-color: $nature;
+        }
+        &__2 {
+            @extend .o-home--box;
+            background-color: $stormy-bay;
+        }
+        &__3 {
+            @extend .o-home--box;
+            background-color: $dark-and-stormy;
+        }
+        &__4 {
+            @extend .o-home--box;
+            background-color: $carrot;
+        }
+    }
+}

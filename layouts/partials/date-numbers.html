@@ -1,0 +1,3 @@
+<time datetime="{{ .PublishDate.Format "2006-01-02T15:04:05Z07:00" | safeHTML }}">
+    {{ index $.Site.Data.dagen_nr (printf "%d" .Date.Day) }}.{{ index $.Site.Data.maanden_nr (printf "%d" .Date.Month) }}.{{ .Date.Year }}
+</time>

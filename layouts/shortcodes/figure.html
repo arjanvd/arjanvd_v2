@@ -1,0 +1,21 @@
+{{ $img := $.Page.Resources.GetMatch "media/**" }}
+{{ $src_url := $img.Permalink }}
+{{ $src := $src_url | strings.TrimRight ".jpg"}}
+<figure class="o-figure">
+    <img itemprop="url" class="o-image"
+        srcset="{{ $src }}_XXS.jpg 640w, 
+                {{ $src }}_XS.jpg 768w,
+                {{ $src }}_S.jpg 1024w,
+                {{ $src }}_M.jpg 1366w,
+                {{ $src }}_L.jpg 1600w,
+                {{ $src }}_XL.jpg 1920w,
+                {{ $src }}_XXL.jpg 2400w"
+        src="{{ $src }}_XS.jpg" 
+        {{ if or (.Get "alt") (.Get "caption") }}alt="{{ with .Get "alt" }}{{ . }}{{ else }}{{ .Get "caption" }}{{ end }}"{{ end }} 
+    />
+    {{ with .Get "caption" }}
+    <figcaption>
+        <p>{{ . }}</p>
+    </figcaption>
+    {{ end }}
+</figure>

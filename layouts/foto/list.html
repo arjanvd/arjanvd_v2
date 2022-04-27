@@ -1,0 +1,18 @@
+{{ define "main" }}
+
+<main itemscope itemtype="https://schema.org/CreativeWork" class="g-wrapper__main">
+
+{{ $paginator := .Paginate (where .Pages "Section" "foto") 24 }}
+
+<div class="g-photo-grid">     
+  {{ range $paginator.Pages }}
+    {{ partial "photo-in-list.html" . }}
+  {{ end }}
+</div>
+
+{{ partial "pagination-list.html" (dict "p" $paginator) }}
+
+</main>    
+
+
+{{ end }}

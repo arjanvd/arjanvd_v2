@@ -1,0 +1,8 @@
+.t-logo {  
+    @include vr-type($ms-up4, 6);
+    font-family: $font-display;
+    font-weight: 652;
+    color: var(--c-logo);
+    text-shadow: var(--c-shadow);
+    //text-transform: uppercase;
+}

@@ -1,0 +1,70 @@
+/* ----------------------------------------------------------------------------
+
+HEADINGS
+
+===============================================================================
+03_atoms/_headings.scss
+-------------------------------------------------------------------------------
+
+Basic styles to h1 - h6
+
+---------------------------------------------------------------------------- */
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-serif;
+  font-weight: 800;
+  color: var(--c-text);
+  letter-spacing: -0.04em;
+}
+
+.t-h-up1 { @include vr-type($ms-up1); }
+.t-h-up2 { @include vr-type($ms-up2, 5); }
+.t-h-up3 { @include vr-type($ms-up3, 6); }
+.t-h-up4 { @include vr-type($ms-up4, 8); }
+.t-h-up5 { @include vr-type($ms-up5); }
+.t-h-up6 { @include vr-type($ms-up6); }
+.t-h-base { @include vr-type($ms-base); }
+.t-h-down1 { @include vr-type($ms-down1); font-weight: 400; }
+.t-h-down2 { @include vr-type($ms-down2); font-weight: 400; }
+
+.t-h-article-list {
+  @include vr-type($ms-base);
+  font-weight: 400;
+  display: inline;
+}
+.t-h-section {
+  @include vr-type($ms-up3);
+  font-family: $font-display;
+  color: var(--c-heading);
+
+  &--sub {
+    @include vr-type($ms-up2);
+    font-family: $font-serif;
+    font-weight: 700;
+    color: var(--c-heading--10);
+    text-transform: capitalize;
+  }
+}
+
+.t-h-tag {
+  @include vr-type($ms-up3);
+    font-family: $font-display;
+    color: var(--c-heading);
+}
+
+.t-h-title {
+  @extend .t-h-up3;
+  font-weight: 900;
+}
+
+.t-h-taxonomy {
+  @include vr-type($ms-up3);
+  color: var(--c-heading);
+}
+
+.t-h-blog {
+  font-family: $font-serif;
+  font-weight: 400;
+  @include vr-type($ms-base);
+}

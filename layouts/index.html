@@ -1,0 +1,67 @@
+{{ partial "head.html" . }}
+
+<body>
+
+<div class="g-home">
+  <div class="g-home__content">
+    <div class="l-switch--alt">
+      <div class="theme-switch-wrapper">
+        <label class="theme-switch" for="switch">
+          <input type="checkbox" id="switch" role="switch" />
+          <div class="slider round"></div>
+        </label>
+      </div>
+    </div> 
+    <div class="g-home__title t-home__title">
+      Ik ben Arjan<span class="o-logo__link--dot">.</span>
+    </div>
+    <div class="t-home__body">
+      <span>Vader</span> van Hugo en Mats, <span>man</span> van Martine, <span>Rotterdammer(t)</span>, <span>wielrenner</span>, <span>rijksambtenaar</span>, <span>D66’er</span>. 
+      <span>Ik probeer alles en kan best veel.</span> Op deze plek schrijf ik met onregelmatige tussenpozen over van alles en nog wat. En ik maak nog wel eens een foto. 
+      <span>In de beperking toont zich de meester? Welnee.</span>
+    </div>
+  </div>
+  <div class="g-home__nav t-home__nav">
+    <a href="/blog/" class="o-home--box__1">
+      <p class="t-home__nav--alt">blog</p>
+    </a>
+    <a href="/foto/" class="o-home--box__2">
+      <p class="t-home__nav--alt">foto's</p>
+    </a>
+    <a href="/link/" class="o-home--box__3">
+      <p>links</p>
+    </a>
+    <a href="/prikkel/" class="o-home--box__4">
+      <p>prikkels</p>
+    </a>
+  </div>
+</div>
+
+</body>
+<!-- copied from https://codepen.io/ananyaneogi/pen/zXZyMP -->
+<script>
+  const toggleSwitch = document.getElementById("switch");
+  const currentTheme = localStorage.getItem('theme');
+  
+  if (currentTheme) {
+      document.documentElement.setAttribute('data-theme', currentTheme);
+    
+      if (currentTheme === 'dark') {
+          toggleSwitch.checked = true;
+      }
+  }
+  
+  function switchTheme(e) {
+      if (e.target.checked) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          localStorage.setItem('theme', 'dark');
+      }
+      else {        document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+      }    
+  }
+  
+  toggleSwitch.addEventListener('change', switchTheme, false);
+    </script>
+  <script src="{{ "js/a11y-dialog.min.js" | relURL }}"></script>
+  </html>

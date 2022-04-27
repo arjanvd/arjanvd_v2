@@ -1,0 +1,23 @@
+.o-date {
+    display: block;
+    position: relative;
+    font-family: $font-sans;
+
+    &__year {
+        position: absolute;
+        top: 0;
+        right: 0;
+        @include vr-type($ms-up2);
+        color: var(--c-text--alt--1000);
+        font-weight: 700;
+    }
+
+    &__month {
+        position: absolute;
+        top: vr(4);
+        right: vr(2);
+        z-index: 1;
+        color: var(--c-text--1000);
+        font-weight: 700;
+    }
+}

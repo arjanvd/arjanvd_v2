@@ -1,0 +1,14 @@
+  {{ $taxonomy := "series" }}
+  {{ with .Param $taxonomy }}
+  <div>
+    <i class="o-icon--art-data"><!-- tabler-icons.io archive -->
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z"/><rect width="18" height="4" x="3" y="4" rx="2"/><path d="M5 8v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8"/><line x1="10" x2="14" y1="12" y2="12"/></svg>      
+    </i>
+    {{ range $index, $serie := . }}
+      {{ if gt $index 0 }} &middot; {{ end }}
+      {{ with $.Site.GetPage (printf "/%s/%s" $taxonomy ($serie | anchorize )) }}
+          <a href="{{ .Permalink }}" class="t-article-data t-link--article-data">{{ $serie }}</a>
+      {{ end }}
+    {{ end }}
+  </div>
+  {{ end }}

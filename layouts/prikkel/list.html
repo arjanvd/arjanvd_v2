@@ -1,0 +1,18 @@
+{{ define "main" }}
+
+<main itemscope itemtype="https://schema.org/CreativeWork" class="g-wrapper__main">
+
+    {{ $paginator := .Paginate (where .Pages "Section" "prikkel") 36 }}
+
+    <div class="g-default--medium">     
+    {{ range $paginator.Pages }}
+      {{ partial "single-prikkel.html" . }}
+    {{ end }}
+    </div>
+    
+    {{ partial "pagination-list.html" (dict "p" $paginator) }}
+
+</main>    
+
+
+{{ end }}

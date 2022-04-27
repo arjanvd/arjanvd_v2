@@ -1,0 +1,35 @@
+.t-home {
+
+    &__title {
+        @include vr-type($ms-up5, 8);
+        font-family: $font-display;
+        font-weight: 652;
+        color: var(--c-logo);
+        text-align: center;
+        text-shadow: var(--c-shadow);
+    }
+
+    &__body {
+        @include vr-type($ms-up1, 5);
+        text-align: center;
+    }
+
+    &__nav {
+        @include vr-type($ms-up2, 5);
+        font-family: $font-display;
+        font-weight: 652;
+        color: $nature-l50;
+        text-align: center;
+        &--alt {
+            color: var(--c-logo);
+        }
+        p {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+}

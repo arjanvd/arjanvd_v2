@@ -1,0 +1,3061 @@
+@charset "UTF-8";
+/* --------------------------------------------------------
+
+MAIN STYLESHEET for arjanvd.nl
+
+-----------------------------------------------------------
+
+TABLE OF CONTENTS
+@toc
+
+- 01_base .... reset, mixins, functions, vars, vendors
+- Elements .... single elements
+- Layout .... layout objects like grids, containers
+- Components .... objects created by combining elements
+
+-------------------------------------------------------- */
+/*  -------------------------------------------------------
+    @01_base
+-------------------------------------------------------- */
+/* ----------------------------------------------------------------------------
+
+VERTICAL RHYTHM ON A MODULAR SCALE
+
+===============================================================================
+
+A Sass toolkit that sets type in rem's, based on a modular scale while 
+maintaining vertical rhythm. And as a small bonus pixel borders that maintain 
+rhythm.
+
+Github: https://github.com/arjanvd/Vertical-rhythm-on-a-modular-scale
+License: The MIT License (MIT)
+
+Heavily inspired by and used stuff from:
+[x] https://github.com/ianrose/typesettings
+[x] http://alwaystwisted.com/articles/2013-12-30-not-your-average-vertical-rhythm-sass-mixin
+
+---------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------
+Modular scale 
+===============================================================================
+
+Sass map
+modularscale.com
+
+---------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------
+Configurable variables
+===============================================================================
+
+The config variables have default values that you can adjust at will. Use these 
+variables to customize your settings. But be careful: with great powers come 
+great responsibility.
+
+---------------------------------------------------------------------------- */
+/* ----
+Choose a key from $ms-ratio-map above. Check modularscale.com to make an 
+educated choice. 
+---- */
+/* ----
+Set the font-size to a value in rem's. It's advised to leave this at 1rem, 
+while setting a percentage font-size on your html tag (i.e. html { font-size: 
+100%; }). When you need a larger base font-size at higher media queries, only 
+adjust the font-size on the html-tag (i.e. @media (min-width: 600px) { html { 
+font-size: 120%; } }).
+---- */
+/* ----
+Set the line-height which serves as the base for the vertical rhythm.
+---- */
+/* ----
+Sometimes you need more granular control of the distance between elements than 
+a full $base-line-height. This variable defines that amount of granular 
+control.
+---- */
+/* ----------------------------------------------------------------------------
+Helper variables
+===============================================================================
+
+The vertical grid unit, set in rem's like font-size. This is the value that 
+determines the baseline for our vertical rhythm. Line-height, margin, and 
+padding are set to multiples of this value. 
+[Note] Do not touch this variable. Just admire its beauty from a distance.
+
+---------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------
+Modular scale calculations
+===============================================================================
+
+Based on the configurable variables $base-font-size and $ms-ratio the modular 
+scale is calculated, both up and down. Each step down divides the previous step 
+with $ms-ratio (i.e. $ms-down2 = $ms-down1 / $ms-ratio). Each step up multi-
+plies the previous step with $ms-ratio (i.e. $ms-up2 = $ms-up1 * $ms-ratio). 
+[Note] This one already goes up to eleven, but if you need more size up then 
+add more sizes. And no, it doesn't go down to eleven. That would be ridiculous.
+
+---------------------------------------------------------------------------- */
+/* ----------------------------------------------------------------------------
+Mixins and function
+===============================================================================
+
+The mixins and function that make sure that vertical rhythm is maintained. This 
+is where the real magic happens.
+
+---------------------------------------------------------------------------- */
+/* Example:
+.panel {
+  background-color: color($primary, 2);
+} */
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain) */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, button, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1.5;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+/* 
+	https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/*
+2. Remove default margin
+ */
+* {
+  margin: 0;
+}
+
+/*
+3. Allow percentage-based heights in the application
+ */
+html, body {
+  height: 100%;
+}
+
+/*
+Typographic tweaks!
+4. Add accessible line-height
+5. Improve text rendering
+ */
+body {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*
+6. Improve media defaults
+ */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/*
+7. Remove built-in form typography styles
+ */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/*
+8. Avoid text overflows
+ */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+*:focus {
+  outline: 1px solid #fb743e;
+  box-shadow: var(--c-focus);
+}
+
+:root {
+  --bg-body: linear-gradient(25deg,hsl(105, 20%, 96%) 0%,hsl(108deg 21% 96%) 5%,hsl(110deg 20% 96%) 10%,hsl(113deg 19% 96%) 14%,hsl(116deg 19% 96%) 19%,hsl(119deg 18% 96%) 24%,hsl(122deg 17% 96%) 29%,hsl(125deg 17% 96%) 33%,hsl(128deg 17% 96%) 38%,hsl(131deg 17% 96%) 43%,hsl(133deg 17% 96%) 48%,hsl(136deg 17% 95%) 52%,hsl(138deg 17% 95%) 57%,hsl(141deg 17% 95%) 62%,hsl(143deg 17% 95%) 67%,hsl(145deg 17% 95%) 71%,hsl(147deg 17% 95%) 76%,hsl(149deg 17% 95%) 81%,hsl(151deg 17% 95%) 86%,hsl(153deg 17% 95%) 90%,hsl(154deg 17% 94%) 95%,hsl(156, 16%, 94%) 100%);
+  --bg-bq: linear-gradient(160deg,hsl(153deg 16% 89%) 0%,hsl(153deg 16% 89%) 5%,hsl(153deg 16% 89%) 10%,hsl(154deg 16% 90%) 14%,hsl(154deg 16% 90%) 19%,hsl(154deg 16% 90%) 24%,hsl(154deg 16% 90%) 29%,hsl(154deg 16% 91%) 33%,hsl(154deg 16% 91%) 38%,hsl(154deg 16% 91%) 43%,hsl(154deg 16% 91%) 48%,hsl(154deg 16% 92%) 52%,hsl(154deg 16% 92%) 57%,hsl(155deg 16% 92%) 62%,hsl(155deg 17% 92%) 67%,hsl(155deg 17% 93%) 71%,hsl(155deg 17% 93%) 76%,hsl(155deg 17% 93%) 81%,hsl(155deg 17% 94%) 86%,hsl(156deg 17% 94%) 90%,hsl(156deg 17% 94%) 95%,hsl(156deg 17% 94%) 100%);
+  --bg-code: #e3dbcd;
+  --bg-code--inline: #e3dbcd;
+  --bg-link: #d999b6;
+  --bg-link--alt: #ecccda;
+  --c-logo: #383e56;
+  --c-border: #b8bac3;
+  --c-border--light: #e3dbcd;
+  --c-text: #11192e;
+  --c-text--10: #2e344c;
+  --c-text--100: #383e56;
+  --c-text--1000: #76798b;
+  --c-text--10000: #b8bac3;
+  --c-text--alt: #283e36;
+  --c-text--alt--10: #435a51;
+  --c-text--alt--100: #60786e;
+  --c-text--alt--1000: #bdac8a;
+  --c-link--text: #d95521;
+  --c-link--text--alt: #770000;
+  --c-link--data: #fb743e;
+  --c-link--data--alt: #fb723c;
+  --c-heading: #383e56;
+  --c-heading--10: #572f19;
+  --gradient-icon: url(#gradient-light) white;
+  --p-side: 2.25rem;
+  --max-width: 32rem;
+  --c-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+  --c-shadow--inset: rgba(0, 0, 0, 0.07) 0px 1px 2px inset, rgba(0, 0, 0, 0.07) 0px 2px 4px inset, rgba(0, 0, 0, 0.07) 0px 4px 8px inset, rgba(0, 0, 0, 0.07) 0px 8px 16px inset, rgba(0, 0, 0, 0.07) 0px 16px 32px inset, rgba(0, 0, 0, 0.07) 0px 32px 64px inset;
+  --c-focus: 0px 0px 5px 0px rgba(251, 116, 62, 0.9) ;
+}
+
+[data-theme=dark] {
+  --bg-body: linear-gradient(25deg, hsl(213deg 100% 6%) 0%, hsl(216deg 82% 7%) 5%, hsl(217deg 75% 7%) 10%, hsl(218deg 69% 7%) 14%, hsl(219deg 65% 7%) 19%, hsl(219deg 60% 7%) 24%, hsl(220deg 57% 7%) 29%, hsl(221deg 53% 7%) 33%, hsl(221deg 50% 7%) 38%, hsl(222deg 46% 7%) 43%, hsl(222deg 43% 7%) 48%, hsl(223deg 40% 7%) 52%, hsl(223deg 37% 7%) 57%, hsl(224deg 33% 7%) 62%, hsl(224deg 30% 7%) 67%, hsl(225deg 26% 7%) 71%, hsl(225deg 23% 7%) 76%, hsl(226deg 19% 7%) 81%, hsl(226deg 15% 6%) 86%, hsl(227deg 10% 6%) 90%, hsl(227deg 5% 6%) 95%, hsl(0deg 0% 6%) 100%);
+  --bg-bq: linear-gradient(rgba(16, 16, 16, 0.8), rgba(16, 16, 16, 0.8)), url(images/SVG/daks-blue-loden.svg) repeat 0 0;
+  --bg-code: #30291a;
+  --bg-code--inline: #30291a;
+  --bg-link: #700032;
+  --bg-link--alt: #500024;
+  --c-border: #403623;
+  --c-border--light: #30291a;
+  --c-text: #d9cfbc;
+  --c-text--10: #cbcbbf;
+  --c-text--100: #9e9e94;
+  --c-text--1000: #88887f;
+  --c-text--alt: #806d46;
+  --c-text--alt--1000: #30291a;
+  --c-link--text: #d080a4;
+  --c-link--text--alt: #ecccda;
+  --c-link--data: #406276;
+  --c-link--data--alt: #2E4C52;
+  --c-heading: #b4a399;
+  --c-heading--10: #a28c80;
+  --c-shadow: #000000;
+  --gradient-icon: url(#gradient-dark) black;
+}
+
+.mb-1 {
+  margin-bottom: 0.375rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.75rem;
+}
+
+.mb-3 {
+  margin-bottom: 1.125rem;
+}
+
+.mb-4 {
+  margin-bottom: 1.5rem;
+}
+
+.mb-5 {
+  margin-bottom: 1.875rem;
+}
+
+.mb-6 {
+  margin-bottom: 2.25rem;
+}
+
+.mb-7 {
+  margin-bottom: 2.625rem;
+}
+
+.mb-8 {
+  margin-bottom: 3rem;
+}
+
+.mb-9 {
+  margin-bottom: 3.375rem;
+}
+
+.mb-10 {
+  margin-bottom: 3.75rem;
+}
+
+.mb-11 {
+  margin-bottom: 4.125rem;
+}
+
+.mb-12 {
+  margin-bottom: 4.5rem;
+}
+
+.mt-1 {
+  margin-top: 0.375rem;
+}
+
+.mt-2 {
+  margin-top: 0.75rem;
+}
+
+.mt-3 {
+  margin-top: 1.125rem;
+}
+
+.mt-4 {
+  margin-top: 1.5rem;
+}
+
+.mt-5 {
+  margin-top: 1.875rem;
+}
+
+.mt-6 {
+  margin-top: 2.25rem;
+}
+
+.mt-7 {
+  margin-top: 2.625rem;
+}
+
+.mt-8 {
+  margin-top: 3rem;
+}
+
+.mt-9 {
+  margin-top: 3.375rem;
+}
+
+.mt-10 {
+  margin-top: 3.75rem;
+}
+
+.mt-11 {
+  margin-top: 4.125rem;
+}
+
+.mt-12 {
+  margin-top: 4.5rem;
+}
+
+.ml-1 {
+  margin-left: 0.375rem;
+}
+
+.ml-2 {
+  margin-left: 0.75rem;
+}
+
+.ml-3 {
+  margin-left: 1.125rem;
+}
+
+.ml-4 {
+  margin-left: 1.5rem;
+}
+
+.ml-5 {
+  margin-left: 1.875rem;
+}
+
+.ml-6 {
+  margin-left: 2.25rem;
+}
+
+.ml-7 {
+  margin-left: 2.625rem;
+}
+
+.ml-8 {
+  margin-left: 3rem;
+}
+
+.ml-9 {
+  margin-left: 3.375rem;
+}
+
+.ml-10 {
+  margin-left: 3.75rem;
+}
+
+.ml-11 {
+  margin-left: 4.125rem;
+}
+
+.ml-12 {
+  margin-left: 4.5rem;
+}
+
+.mr-1 {
+  margin-right: 0.375rem;
+}
+
+.mr-2 {
+  margin-right: 0.75rem;
+}
+
+.mr-3 {
+  margin-right: 1.125rem;
+}
+
+.mr-4 {
+  margin-right: 1.5rem;
+}
+
+.mr-5 {
+  margin-right: 1.875rem;
+}
+
+.mr-6 {
+  margin-right: 2.25rem;
+}
+
+.mr-7 {
+  margin-right: 2.625rem;
+}
+
+.mr-8 {
+  margin-right: 3rem;
+}
+
+.mr-9 {
+  margin-right: 3.375rem;
+}
+
+.mr-10 {
+  margin-right: 3.75rem;
+}
+
+.mr-11 {
+  margin-right: 4.125rem;
+}
+
+.mr-12 {
+  margin-right: 4.5rem;
+}
+
+.mb-border-1 {
+  margin-bottom: 0.375rem;
+  /* ----
+  Creates a pixel width border bottom with padding that is a multiple of 
+  $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-bottom-width: 1px;
+  padding-bottom: calc(1 * 0.375rem - 1px);
+  border-color: var(--c-text--1000);
+  border-style: solid;
+}
+
+.mb-border-2 {
+  margin-bottom: 0.75rem;
+  /* ----
+  Creates a pixel width border bottom with padding that is a multiple of 
+  $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-bottom-width: 1px;
+  padding-bottom: calc(2 * 0.375rem - 1px);
+  border-color: var(--c-text--1000);
+  border-style: solid;
+}
+
+.mb-border-3 {
+  margin-bottom: 1.125rem;
+  /* ----
+  Creates a pixel width border bottom with padding that is a multiple of 
+  $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-bottom-width: 1px;
+  padding-bottom: calc(3 * 0.375rem - 1px);
+  border-color: var(--c-text--1000);
+  border-style: solid;
+}
+
+.mb-border-4 {
+  margin-bottom: 1.5rem;
+  /* ----
+  Creates a pixel width border bottom with padding that is a multiple of 
+  $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-bottom-width: 1px;
+  padding-bottom: calc(4 * 0.375rem - 1px);
+  border-color: var(--c-text--1000);
+  border-style: solid;
+}
+
+.mb-border-5 {
+  margin-bottom: 1.875rem;
+  /* ----
+  Creates a pixel width border bottom with padding that is a multiple of 
+  $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-bottom-width: 1px;
+  padding-bottom: calc(5 * 0.375rem - 1px);
+  border-color: var(--c-text--1000);
+  border-style: solid;
+}
+
+.mb-border-6 {
+  margin-bottom: 2.25rem;
+  /* ----
+  Creates a pixel width border bottom with padding that is a multiple of 
+  $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-bottom-width: 1px;
+  padding-bottom: calc(6 * 0.375rem - 1px);
+  border-color: var(--c-text--1000);
+  border-style: solid;
+}
+
+.mb-border-7 {
+  margin-bottom: 2.625rem;
+  /* ----
+  Creates a pixel width border bottom with padding that is a multiple of 
+  $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-bottom-width: 1px;
+  padding-bottom: calc(7 * 0.375rem - 1px);
+  border-color: var(--c-text--1000);
+  border-style: solid;
+}
+
+.mb-border-8 {
+  margin-bottom: 3rem;
+  /* ----
+  Creates a pixel width border bottom with padding that is a multiple of 
+  $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-bottom-width: 1px;
+  padding-bottom: calc(8 * 0.375rem - 1px);
+  border-color: var(--c-text--1000);
+  border-style: solid;
+}
+
+.mb-border-9 {
+  margin-bottom: 3.375rem;
+  /* ----
+  Creates a pixel width border bottom with padding that is a multiple of 
+  $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-bottom-width: 1px;
+  padding-bottom: calc(9 * 0.375rem - 1px);
+  border-color: var(--c-text--1000);
+  border-style: solid;
+}
+
+.mb-border-10 {
+  margin-bottom: 3.75rem;
+  /* ----
+  Creates a pixel width border bottom with padding that is a multiple of 
+  $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-bottom-width: 1px;
+  padding-bottom: calc(10 * 0.375rem - 1px);
+  border-color: var(--c-text--1000);
+  border-style: solid;
+}
+
+.mb-border-11 {
+  margin-bottom: 4.125rem;
+  /* ----
+  Creates a pixel width border bottom with padding that is a multiple of 
+  $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-bottom-width: 1px;
+  padding-bottom: calc(11 * 0.375rem - 1px);
+  border-color: var(--c-text--1000);
+  border-style: solid;
+}
+
+.mb-border-12 {
+  margin-bottom: 4.5rem;
+  /* ----
+  Creates a pixel width border bottom with padding that is a multiple of 
+  $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-bottom-width: 1px;
+  padding-bottom: calc(12 * 0.375rem - 1px);
+  border-color: var(--c-text--1000);
+  border-style: solid;
+}
+
+.mt-border-1 {
+  margin-top: 0.375rem;
+  /* ----
+  Creates a pixel width border top with padding that is a multiple of 
+  $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-top-width: 1px;
+  padding-top: calc(1 * 0.375rem - 1px);
+  border-color: var(--color-text--30);
+  border-style: solid;
+}
+
+.mt-border-2 {
+  margin-top: 0.75rem;
+  /* ----
+  Creates a pixel width border top with padding that is a multiple of 
+  $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-top-width: 1px;
+  padding-top: calc(2 * 0.375rem - 1px);
+  border-color: var(--color-text--30);
+  border-style: solid;
+}
+
+.mt-border-3 {
+  margin-top: 1.125rem;
+  /* ----
+  Creates a pixel width border top with padding that is a multiple of 
+  $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-top-width: 1px;
+  padding-top: calc(3 * 0.375rem - 1px);
+  border-color: var(--color-text--30);
+  border-style: solid;
+}
+
+.mt-border-4 {
+  margin-top: 1.5rem;
+  /* ----
+  Creates a pixel width border top with padding that is a multiple of 
+  $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-top-width: 1px;
+  padding-top: calc(4 * 0.375rem - 1px);
+  border-color: var(--color-text--30);
+  border-style: solid;
+}
+
+.mt-border-5 {
+  margin-top: 1.875rem;
+  /* ----
+  Creates a pixel width border top with padding that is a multiple of 
+  $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-top-width: 1px;
+  padding-top: calc(5 * 0.375rem - 1px);
+  border-color: var(--color-text--30);
+  border-style: solid;
+}
+
+.mt-border-6 {
+  margin-top: 2.25rem;
+  /* ----
+  Creates a pixel width border top with padding that is a multiple of 
+  $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-top-width: 1px;
+  padding-top: calc(6 * 0.375rem - 1px);
+  border-color: var(--color-text--30);
+  border-style: solid;
+}
+
+.mt-border-7 {
+  margin-top: 2.625rem;
+  /* ----
+  Creates a pixel width border top with padding that is a multiple of 
+  $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-top-width: 1px;
+  padding-top: calc(7 * 0.375rem - 1px);
+  border-color: var(--color-text--30);
+  border-style: solid;
+}
+
+.mt-border-8 {
+  margin-top: 3rem;
+  /* ----
+  Creates a pixel width border top with padding that is a multiple of 
+  $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-top-width: 1px;
+  padding-top: calc(8 * 0.375rem - 1px);
+  border-color: var(--color-text--30);
+  border-style: solid;
+}
+
+.mt-border-9 {
+  margin-top: 3.375rem;
+  /* ----
+  Creates a pixel width border top with padding that is a multiple of 
+  $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-top-width: 1px;
+  padding-top: calc(9 * 0.375rem - 1px);
+  border-color: var(--color-text--30);
+  border-style: solid;
+}
+
+.mt-border-10 {
+  margin-top: 3.75rem;
+  /* ----
+  Creates a pixel width border top with padding that is a multiple of 
+  $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-top-width: 1px;
+  padding-top: calc(10 * 0.375rem - 1px);
+  border-color: var(--color-text--30);
+  border-style: solid;
+}
+
+.mt-border-11 {
+  margin-top: 4.125rem;
+  /* ----
+  Creates a pixel width border top with padding that is a multiple of 
+  $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-top-width: 1px;
+  padding-top: calc(11 * 0.375rem - 1px);
+  border-color: var(--color-text--30);
+  border-style: solid;
+}
+
+.mt-border-12 {
+  margin-top: 4.5rem;
+  /* ----
+  Creates a pixel width border top with padding that is a multiple of 
+  $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-top-width: 1px;
+  padding-top: calc(12 * 0.375rem - 1px);
+  border-color: var(--color-text--30);
+  border-style: solid;
+}
+
+/* ----------------------------------------------------------------------------
+
+LAYOUT
+
+===============================================================================
+02_layout/_02_layout.scss
+-------------------------------------------------------------------------------
+
+A portion of CSS is structural layout.
+
+This file is imported in site.scss, so all files in the 02_layout folder are 
+imported. WARNING: do not import files in the 02_layout folder directly into 
+site.scss
+
+---------------------------------------------------------------------------- */
+.g-article--prikkel {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: minmax(10px, 1fr) -webkit-min-content;
+  grid-template-rows: minmax(10px, 1fr) min-content;
+}
+.g-article--prikkel__body-top {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.g-article--prikkel__body-bottom {
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+.g-article--prikkel__image {
+  grid-column: 2/3;
+  grid-row: 1/3;
+}
+
+@media (min-width: 996px) {
+  .g-article-list {
+    display: grid;
+    grid-template-columns: [side-l-start] 11rem [side-l-end main-start] 25rem [main-end];
+  }
+}
+@media (min-width: 996px) {
+  .g-article-list__title {
+    grid-column: main;
+  }
+}
+@media (min-width: 996px) {
+  .g-article-list__aside {
+    grid-column: side-l;
+    margin: 0 1.125rem 0 0;
+  }
+}
+
+@media (min-width: 996px) {
+  .g-blog__body {
+    display: grid;
+    grid-template-columns: minmax(25rem, 30rem) 1fr;
+  }
+  .g-blog__body > * {
+    grid-column: 1/3;
+  }
+  .g-blog__body > *:not(.full):not(.half) {
+    grid-column: 1/2;
+  }
+}
+
+.g-blog--snippers {
+  margin-bottom: 1.5rem;
+  /* ----
+  Creates a pixel width border bottom with padding that is a multiple of 
+  $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-bottom-width: 1px;
+  padding-bottom: calc(6 * 0.375rem - 1px);
+  border-color: var(--c-border--light);
+  border-style: solid;
+}
+@media (min-width: 480px) {
+  .g-blog--snippers {
+    display: grid;
+    grid-gap: 1.5rem;
+    grid-template-columns: [full-start side-l-start] 1fr [side-l-end main-start] repeat(3, 1fr) [main-end full-end];
+  }
+}
+@media (min-width: 768px) {
+  .g-blog--snippers {
+    grid-template-columns: [full-start side-l-start] 10rem [side-l-end main-start] 1fr [main-end full-end];
+  }
+}
+@media (min-width: 996px) {
+  .g-blog--snippers {
+    grid-template-columns: [full-start side-l-start] 10rem [side-l-end main-start] minmax(25rem, 30rem) [main-end side-r-start] minmax(3rem, 8rem) [side-r-end full-end];
+  }
+}
+.g-blog--snippers__image img {
+  height: 5rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media (min-width: 480px) {
+  .g-blog--snippers__image img {
+    height: auto;
+  }
+}
+@media (min-width: 480px) {
+  .g-blog--snippers__image {
+    grid-column: side-l;
+  }
+}
+@media (min-width: 480px) {
+  .g-blog--snippers__main {
+    grid-column: main;
+  }
+}
+.g-blog--snippers__date {
+  display: none;
+}
+@media (min-width: 996px) {
+  .g-blog--snippers__date {
+    display: block;
+    grid-column: side-r;
+  }
+}
+
+.g-blog {
+  margin-left: var(--m-side);
+  margin-right: var(--m-side);
+}
+@media (min-width: 996px) {
+  .g-blog {
+    display: grid;
+    grid-template-columns: [full-start] var(--m-side) [side-l-start] 11rem [side-l-end main-start] minmax(25rem, 30rem) [main-end side-r-start] 1fr [side-r-end] var(--m-side) [full-end];
+    grid-template-rows: repeat(8, -webkit-min-content);
+    grid-template-rows: repeat(8, min-content);
+    margin: 0;
+  }
+}
+.g-blog__image {
+  height: 15rem;
+  border-right: 1px solid var(--c-border);
+  border-bottom: 1px solid var(--c-border);
+  border-left: 1px solid var(--c-border);
+}
+@media (min-width: 996px) {
+  .g-blog__image {
+    grid-column: side-l/side-r;
+    grid-row: 1/2;
+    max-width: 100%;
+  }
+}
+.g-blog__title, .g-blog__data, .g-blog__text {
+  max-width: 30rem;
+  margin-left: 0;
+  margin-right: 0;
+}
+@media (min-width: 996px) {
+  .g-blog__title, .g-blog__data, .g-blog__text {
+    max-width: 100%;
+  }
+}
+@media (min-width: 996px) {
+  .g-blog__title {
+    grid-column: side-l/main;
+    grid-row: 2/3;
+  }
+}
+@media (min-width: 996px) {
+  .g-blog__data {
+    grid-column: side-l;
+    grid-row: 3/-1;
+    margin-top: 0.1875rem;
+  }
+}
+@media (min-width: 996px) {
+  .g-blog__data--category {
+    grid-column: side-l;
+    grid-row: 3/4;
+  }
+}
+@media (min-width: 996px) {
+  .g-blog__data--time {
+    grid-column: side-l;
+    grid-row: 4/5;
+  }
+}
+@media (min-width: 996px) {
+  .g-blog__data--words {
+    grid-column: side-l;
+    grid-row: 5/6;
+  }
+}
+@media (min-width: 996px) {
+  .g-blog__data--series {
+    grid-column: side-l;
+    grid-row: 6/7;
+  }
+}
+@media (min-width: 996px) {
+  .g-blog__data--tags {
+    grid-column: side-l;
+    grid-row: 7/8;
+  }
+}
+.g-blog__text {
+  grid-column: main/side-r;
+  grid-row: 3/-1;
+}
+
+.g-default {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 0.75rem;
+}
+@media (min-width: 480px) {
+  .g-default {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 768px) {
+  .g-default {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (min-width: 1140px) {
+  .g-default {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+.g-default--medium {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 1fr;
+  grid-gap: 1.5rem 3rem;
+}
+@media (min-width: 1140px) {
+  .g-default--medium {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 1440px) {
+  .g-default--medium {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.g-default--small {
+  margin-bottom: 2.25rem;
+}
+@media (min-width: 480px) {
+  .g-default--small {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2.25rem 2.25rem;
+  }
+}
+@media (min-width: 768px) {
+  .g-default--small {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.g-home {
+  display: grid;
+  grid-template-rows: minmax(10px, 1fr) -webkit-min-content;
+  grid-template-rows: minmax(10px, 1fr) min-content;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 1.5rem var(--p-side);
+}
+@media (min-width: 996px) {
+  .g-home {
+    grid-template-rows: auto;
+    grid-template-columns: 32rem 1fr;
+    gap: 1.5rem;
+  }
+}
+.g-home__content {
+  display: grid;
+  grid-template-rows: -webkit-min-content 2fr 3fr;
+  grid-template-rows: min-content 2fr 3fr;
+}
+.g-home__title {
+  justify-self: center;
+  align-self: center;
+}
+.g-home__nav {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+@media (min-width: 996px) {
+  .g-home__nav {
+    grid-template-columns: auto;
+    grid-template-rows: repeat(4, 1fr);
+  }
+}
+
+.g-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 0.75rem;
+}
+@media (min-width: 480px) {
+  .g-photo-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (min-width: 768px) {
+  .g-photo-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media (min-width: 1140px) {
+  .g-photo-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+.g-photo-grid__in-article {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 0.75rem;
+}
+@media (min-width: 480px) {
+  .g-photo-grid__in-article {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.g-photo {
+  justify-self: start;
+  align-self: start;
+}
+
+.g-wrapper, .g-wrapper--large, .g-wrapper--small {
+  display: grid;
+  grid-template-rows: -webkit-min-content minmax(10px, 1fr) -webkit-min-content;
+  grid-template-rows: min-content minmax(10px, 1fr) min-content;
+  width: 100%;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 0 var(--p-side);
+}
+.g-wrapper__header {
+  margin-top: 1.125rem;
+  margin-bottom: 3rem;
+}
+.g-wrapper__main {
+  margin-bottom: 3.75rem;
+}
+.g-wrapper--small {
+  max-width: 1200px;
+}
+.g-wrapper--large {
+  max-width: 1920px;
+}
+.g-wrapper--large .g-wrapper__header, .g-wrapper--large .g-wrapper__footer {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 var(--p-side);
+}
+
+.l-article-body {
+  position: relative;
+}
+.l-article-body > * {
+  max-width: 100%;
+}
+.l-article-body > *:not(.full):not(.o-figure) {
+  max-width: var(--max-width);
+}
+
+.l-footer {
+  margin-top: 1.5rem;
+  margin-bottom: 1.875rem;
+}
+
+.l-main {
+  margin-left: var(--m-side);
+  margin-right: var(--m-side);
+  margin-top: 1.5rem;
+  margin-bottom: 2.25rem;
+  max-width: 46rem;
+}
+.l-main--snippers {
+  margin-left: var(--m-side);
+  margin-right: var(--m-side);
+  margin-top: 1.5rem;
+  margin-bottom: 2.25rem;
+}
+
+.l-nav {
+  margin-bottom: 1.5rem;
+}
+.l-nav ul {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.l-nav li {
+  margin-right: 1.125rem;
+}
+.l-nav li:last-child {
+  margin-right: 0;
+}
+
+.l-pagination {
+  margin: 0 0 2.25rem;
+}
+.l-pagination__indicator, .l-pagination__item {
+  display: inline-block;
+  margin-right: 1.5rem;
+  padding: 0.375rem 0.75rem;
+  background-color: #ebf2e8;
+  box-shadow: 0 0 0 1px #b8bac3, 0 0 0 2px #f5f8f4;
+}
+.l-pagination__item {
+  margin-right: 0.375rem;
+}
+.l-pagination a {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  margin-right: 0.375rem;
+  background-color: #e1ebdd;
+  box-shadow: 0 0 0 2px #9699a7;
+}
+.l-pagination a:hover {
+  box-shadow: 0 0 0 2px #b73802;
+}
+.l-pagination a:active {
+  box-shadow: 0 0 0 2px #ffa27b;
+}
+
+.l-switch {
+  float: right;
+  margin-top: 0;
+}
+.l-switch--alt {
+  margin-left: auto;
+}
+
+.l-title {
+  position: relative;
+}
+.l-title__date {
+  position: absolute;
+  top: -1.125rem;
+  left: 0;
+  z-index: -1;
+}
+
+/* ----------------------------------------------------------------------------
+
+OBJECTS
+
+===============================================================================
+03_objects/_objects.scss
+-------------------------------------------------------------------------------
+
+From https://zellwk.com/blog/css-architecture-2/:
+
+Objects (.o-) are the smallest building blocks of a website. Consider them to 
+be Lego blocks where you can copy-paste anywhere in your website. Objects have 
+the following properties:
+[a] Objects uses the .o- prefix
+[b] They cannot contain other objects or components.
+[c] They are context independent.
+
+Additions:
+[a] Example: .o-object
+[b] Objects can be small or large. The number of HTML elements within the 
+    object isn’t relevant. All inner elements can only exist within the 
+    specific object.
+[c] Objects are context independent. They don’t know where they’re used. You 
+    could pick any object up, throw it somewhere else and it won’t break the
+    structure of your site. This also means objects should not change any 
+    structure outside itself. 
+
+--
+
+This file is imported in site.scss, so all files in the 03_objects folder are 
+imported. WARNING: do not import files in the 03_objects folder directly into 
+site.scss
+
+---------------------------------------------------------------------------- */
+.o-article-list h2 {
+  display: inline;
+}
+
+.o-article-data {
+  display: inline-block;
+  padding-right: 0.75rem;
+}
+
+.o-article--link {
+  margin-bottom: 1.5rem;
+  max-width: var(--max-width);
+}
+.o-article--prikkel__content {
+  background-color: #eef3f1;
+  border-bottom-right-radius: 0.375rem;
+  border-bottom-left-radius: 0.375rem;
+  box-shadow: var(--c-shadow);
+}
+.o-article--prikkel__body {
+  padding: 0.375rem 0.75rem 0.75rem;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background-image: var(--bg-body);
+  background-attachment: fixed;
+}
+
+.o-date {
+  display: block;
+  position: relative;
+  font-family: "Chivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.o-date__year {
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 1.7777777777rem;
+  line-height: 1.6875000001;
+  color: var(--c-text--alt--1000);
+  font-weight: 700;
+}
+.o-date__month {
+  position: absolute;
+  top: 1.5rem;
+  right: 0.75rem;
+  z-index: 1;
+  color: var(--c-text--1000);
+  font-weight: 700;
+}
+
+.o-embed-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16/9 ratio */
+  height: 0;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--c-shadow);
+}
+.o-embed-container iframe, .o-embed-container object, .o-embed-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.o-figure {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+.o-figure img {
+  margin-bottom: 0.375rem;
+}
+.o-figure figcaption {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  font-family: "Chivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: var(--c-text--10);
+}
+@media (min-width: 996px) {
+  .o-figure img {
+    margin: 0;
+    width: var(--max-width);
+  }
+  .o-figure figcaption {
+    position: absolute;
+    bottom: 0;
+    left: var(--max-width);
+    margin-left: 0.75rem;
+  }
+}
+
+.o-gallery, .o-gallery--sq-4, .o-gallery--sq-3, .o-gallery--sq-2 {
+  display: grid;
+  grid-gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+.o-gallery + div, .o-gallery--sq-4 + div, .o-gallery--sq-3 + div, .o-gallery--sq-2 + div {
+  margin-bottom: 1.5rem;
+  margin-top: -0.75rem;
+}
+.o-gallery--sq-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.o-gallery--sq-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.o-gallery--sq-4 {
+  grid-template-columns: repeat(2, 1fr);
+}
+@media (min-width: 768px) {
+  .o-gallery--sq-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.o-home--box, .o-home--box__4, .o-home--box__3, .o-home--box__2, .o-home--box__1 {
+  box-shadow: var(--c-shadow);
+  position: relative;
+  border-radius: 0.375rem;
+  padding: 2.25rem 0;
+}
+.o-home--box:hover, .o-home--box__4:hover, .o-home--box__3:hover, .o-home--box__2:hover, .o-home--box__1:hover {
+  box-shadow: none;
+}
+.o-home--box:active, .o-home--box__4:active, .o-home--box__3:active, .o-home--box__2:active, .o-home--box__1:active {
+  box-shadow: var(--c-shadow--inset);
+}
+.o-home--box__1 {
+  background-color: #c5d7bd;
+}
+.o-home--box__2 {
+  background-color: #9fb8ad;
+}
+.o-home--box__3 {
+  background-color: #383e56;
+}
+.o-home--box__4 {
+  background-color: #fb743e;
+}
+
+.o-icon {
+  /*
+  &--home {
+    display: inline-block;
+    color: var(--c-text--50);
+    width: $ms-base;
+    height: $ms-base;
+  }
+
+  &--nav, &--separator {
+    display: inline-block;
+    color: var(--c-text--50);
+    width: $ms-down1;
+    height: $ms-down1;
+  }
+  &--nav svg, &--home svg {
+    vertical-align: text-bottom;
+  }
+  &--separator svg {
+    vertical-align: middle;
+  }
+
+  &--sm {
+    width: vr(3);
+    height: vr(3);
+    margin-right: vr(2);
+  }
+
+  /*&--tag {
+    display: inline-block;
+    //align-self: center;
+    width: $ms-up1;
+    height: $ms-up1;
+    fill: var(--gradient-icon);
+  }
+  &--tags {
+    display: inline-block;
+    //color: var(--c-text--50);
+    width: $ms-down1;
+    height: $ms-down1;
+    //vertical-align: text-bottom;
+  }
+
+  &-link {
+    display: inline-block;
+    color: var(--c-text--80);
+
+    &:hover { color: var(--c-text--60); }
+    &:visited, &:active { color: var(--c-text--50); }
+
+  } */
+}
+.o-icon--art-data, .o-icon--tag, .o-icon--nav {
+  display: inline-flex;
+  align-self: center;
+}
+.o-icon--art-data svg, .o-icon--nav svg {
+  width: 0.75rem;
+  height: 0.75rem;
+  top: 0.1rem;
+  position: relative;
+  padding-right: 0.075rem;
+  color: var(--c-text--alt--10);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.o-icon--nav svg {
+  color: var(--c-text--100);
+}
+.o-icon--tag svg {
+  width: 2.3703703702rem;
+  height: 2.3703703702rem;
+  top: 0.1rem;
+  position: relative;
+  padding-right: 0.1875rem;
+  color: #d95521;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.o-icon--gallery-anchor {
+  display: block;
+  position: relative;
+}
+.o-icon--gallery {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  bottom: 0.375rem;
+  right: 0.375rem;
+  color: #f5f8f4;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.o-icon--close {
+  width: 1.3333333333rem;
+  height: 1.3333333333rem;
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  color: #f5f8f4;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.o-image, .o-image--button {
+  box-shadow: var(--c-shadow);
+}
+.o-image--button {
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.o-image--button:hover {
+  box-shadow: none;
+  opacity: 0.9;
+}
+
+.o-img--cover,
+.o-img--hero {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.o-img--illustration {
+  width: 100%;
+  background: var(--bg-bq);
+  border: 1px solid var(--c-border);
+}
+
+.o-img--border {
+  border: 1px solid var(--c-border);
+}
+
+/**
+Make the dialog container, and its child overlay spread across
+the entire window.
+ */
+.dialog-container,
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.dialog-container {
+  z-index: 999;
+}
+.dialog-container[aria-hidden=true] {
+  display: none;
+  /* 1 */
+}
+
+.dialog-overlay {
+  background: rgba(5, 11, 27, 0.9);
+}
+
+.dialog-button {
+  display: block;
+  width: 3.1604938268rem;
+  height: 3.1604938268rem;
+}
+
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  z-index: 999;
+  position: relative;
+}
+.dialog-content img {
+  width: auto;
+  max-width: 1200px;
+  height: auto;
+  max-height: 90vh;
+}
+
+.o-logo {
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+.o-logo__link {
+  color: var(--c-logo);
+  /*
+  &:visited { opacity: 1; }
+  &:hover { 
+    color: var(--c-text--10); 
+  }
+  &:focus { opacity: 0.5; }
+  &:active { opacity: 0.8; }*/
+}
+.o-logo__link--dot {
+  color: #fb743e;
+}
+.o-logo__link--dot:hover {
+  color: #2E4C52;
+}
+
+.o-sidenote {
+  display: inline;
+}
+
+.sidenote__content {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  font-family: "Chivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: var(--c-text--10);
+}
+
+.sidenote__button--asterisk-1::after {
+  content: "*";
+  /* * */
+  display: inline-block;
+}
+
+.sidenote__button--asterisk-2::after {
+  content: "†";
+  /* ✝ */
+  display: inline-block;
+}
+
+.sidenote__button--asterisk-3::after {
+  content: "‡";
+  /* ‡ */
+  display: inline-block;
+}
+
+.sidenote__checkbox {
+  display: none;
+}
+
+/* Hidden, but accessible to browsers that don't do CSS (e.g. screenreaders, Pocket) */
+.sidenote__content-parenthesis {
+  position: absolute;
+  left: -99999px;
+  top: auto;
+}
+
+/* For narrow viewports, the sidenote is hidden by default and shown when the checkbox is checked. */
+@media screen and (max-width: 1079px) {
+  .sidenote__checkbox ~ .sidenote__content {
+    /* Hidden, but accessible to browsers that don't do CSS (e.g. screenreaders, Pocket) */
+    position: absolute;
+    left: -99999px;
+    top: auto;
+  }
+
+  .sidenote__checkbox:checked ~ .sidenote__content {
+    /* override hidden-but-accessible */
+    position: relative;
+    left: auto;
+    /* Don't break up line containing the sidenote */
+    float: left;
+    min-width: 100%;
+    display: block;
+    margin: 0.75rem 0;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .sidenote__button {
+    color: var(--c-text);
+    border-bottom: 1px dashed #961800;
+    cursor: pointer;
+  }
+
+  .sidenote__button:not(:hover):focus::after {
+    display: inline;
+    /* display:inline-block causes misalignment between focus ring and background. */
+  }
+
+  .sidenote__checkbox:checked ~ .sidenote__button::after {
+    content: none;
+  }
+}
+@media screen and (min-width: 1080px) {
+  .o-sidenote {
+    cursor: default;
+  }
+
+  .o-sidenote:hover .sidenote__button::after,
+.o-sidenote:hover .sidenote__content::before {
+    color: #fb743e;
+  }
+
+  .sidenote__content::before {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -4rem;
+    /* to align different types of asterisks we need a fixed width */
+    width: 3rem;
+  }
+
+  .sidenote__content {
+    display: block;
+    position: absolute;
+    left: var(--max-width);
+    /* Align sidenote top with main text */
+    margin-top: -1.5rem;
+    margin-left: 3rem;
+  }
+
+  .sidenote__content--asterisk-1::before {
+    /* * */
+    content: "*";
+    font-family: "Literata", Georgia, "Times New Roman", serif;
+  }
+
+  /* ⁑ */
+  .sidenote__content--asterisk-2::before {
+    content: "†";
+    font-family: "Literata", Georgia, "Times New Roman", serif;
+  }
+
+  /* ⁂ */
+  .sidenote__content--asterisk-3::before {
+    content: "‡";
+    font-family: "Literata", Georgia, "Times New Roman", serif;
+  }
+}
+/* -------------------------------- 
+Title: Switch
+Descr: Custom ON/OFF checkbox toggle
+https://codepen.io/ananyaneogi/pen/zXZyMP
+-------------------------------- */
+.theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.theme-switch {
+  display: inline;
+  height: 34px;
+  position: relative;
+  width: 70px;
+}
+
+.theme-switch input {
+  opacity: 0;
+}
+.theme-switch input:focus + .slider {
+  box-shadow: 0px 0px 27px 0px rgba(160, 160, 60, 0.9);
+}
+
+.slider {
+  background-color: #9eb7ad;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.4s;
+  border: 3px solid #7e978d;
+  box-shadow: var(--c-shadow);
+}
+
+.slider:before {
+  background-color: #60786e;
+  bottom: 1px;
+  content: "";
+  height: 26px;
+  left: 1px;
+  position: absolute;
+  transition: 0.4s;
+  width: 26px;
+  box-shadow: var(--c-shadow);
+}
+
+input:checked + .slider {
+  background-color: #124770;
+  border: 3px solid #1c6fad;
+}
+
+input:checked + .slider:before {
+  transform: translateX(36px);
+  background-color: #c78900;
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.o-tag {
+  display: inline-block;
+  margin-right: 1.5rem;
+}
+
+.o-tooltip {
+  position: relative;
+  border-bottom: 2px dotted #383e56;
+}
+
+.o-tooltip:before {
+  content: attr(tooltip-data);
+  position: absolute;
+  width: 400px;
+  background-color: #ff8b5c;
+  color: #070e24;
+  padding: 0.75rem 1.125rem 1.125rem;
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  font-family: "Chivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  border-radius: 0.375rem;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.35s;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+  box-shadow: var(--c-shadow);
+  visibility: hidden;
+}
+
+/*.o-tooltip:after {
+    content: "";
+    position: absolute;
+    bottom: vr(1);//calc(75%-0.75rem);
+    left: 50%;
+    margin-left: -5px;
+    border-width: vr(2);
+    border-style: solid;
+    opacity: 0;
+    transition: opacity .35s;
+    border-color: $carrot-l20 transparent transparent transparent;
+    box-shadow: var(--c-shadow);
+    visibility: hidden;
+  }*/
+.o-tooltip:hover:before,
+.o-tooltip:hover:after {
+  opacity: 0.95;
+  visibility: visible;
+}
+
+.o-toc {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0.375rem;
+}
+.o-toc li {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 0.75rem;
+  line-height: 2;
+  list-style-type: disc;
+  margin-left: 0.9375rem;
+}
+.o-toc li ul li {
+  list-style-type: circle;
+}
+.o-toc li ul li ul li {
+  list-style-type: lower-greek;
+}
+
+/* ----------------------------------------------------------------------------
+
+TYPOGRAPHY
+
+===============================================================================
+04_typography/_typography.scss
+-------------------------------------------------------------------------------
+
+This file is imported in site.scss, so all files in the 04_typography folder are 
+imported. WARNING: do not import files in the 03_objects folder directly into 
+site.scss
+
+---------------------------------------------------------------------------- */
+/* --------------------------------------------------------
+
+UNIVERSAL 
+
+===========================================================
+04_typography/_universal.scss
+-----------------------------------------------------------
+
+Universal styles for fonts
+
+-------------------------------------------------------- */
+html {
+  font-size: 112.5%;
+  font-family: "Literata", Georgia, "Times New Roman", serif;
+}
+@media (min-width: 480px) {
+  html {
+    font-size: calc(112.5% + 6 * (100vw - 480px) / 960);
+  }
+}
+
+body {
+  color: var(--c-text);
+}
+
+.t-article-body--alt {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+}
+.t-article-body--alt a:hover {
+  opacity: 0.7;
+}
+.t-article-body h2, .t-article-body h3, .t-article-body h4, .t-article-body h5, .t-article-body h6 {
+  font-weight: 700;
+  color: var(--c-text);
+}
+.t-article-body h2 {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 1.7777777777rem;
+  line-height: 1.875rem;
+  margin-top: 0.375rem;
+  margin-bottom: 1.5rem;
+}
+.t-article-body h3 {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 1.3333333333rem;
+  line-height: 1.125;
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+.t-article-body h4, .t-article-body h5, .t-article-body h6 {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.t-article-body h4 {
+  font-style: italic;
+}
+.t-article-body p {
+  margin-bottom: 1.5rem;
+}
+.t-article-body p:last-child {
+  margin-bottom: 0;
+}
+.t-article-body p + ul, .t-article-body p + ol {
+  margin-bottom: 1.5rem;
+}
+.t-article-body ol, .t-article-body ul, .t-article-body dl {
+  margin-bottom: 1.5rem;
+  margin-left: 0.9375rem;
+}
+.t-article-body ul ul, .t-article-body ol ol, .t-article-body dl dl {
+  margin-left: 1.875rem;
+  margin-bottom: 0;
+}
+.t-article-body ul ul:last-child, .t-article-body ol ol:last-child, .t-article-body dl dl:last-child {
+  margin-bottom: 1.5rem;
+}
+.t-article-body ul {
+  list-style: disc;
+}
+.t-article-body ul ul {
+  list-style: circle;
+}
+.t-article-body ol {
+  list-style: decimal;
+}
+.t-article-body ol ol {
+  list-style: lower-roman;
+}
+.t-article-body a {
+  color: var(--c-link--text);
+  border-bottom: 1px solid var(--c-link--text--alt);
+}
+.t-article-body a:hover {
+  color: var(--c-link--text--alt);
+  border-bottom: 2px solid var(--c-link--text);
+}
+.t-article-body blockquote {
+  position: relative;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem 2.25rem 2.25rem 4.875rem;
+  font-family: "Chivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: var(--bg-bq);
+  box-shadow: var(--c-shadow);
+}
+.t-article-body blockquote:before {
+  content: "“";
+  position: absolute;
+  top: -1.5rem;
+  left: 0.375rem;
+  font-family: "Literata", Georgia, "Times New Roman", serif;
+  font-size: 8rem;
+  color: var(--c-logo);
+}
+.t-article-body blockquote footer:before {
+  content: "— ";
+}
+.t-article-body pre {
+  font-family: "PT Mono", "Ubuntu Mono", Monaco, monospace;
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 0.75rem;
+  line-height: 2;
+  color: var(--c-text);
+  background-color: var(--bg-code--inline);
+  padding: 0.25em;
+  border-radius: 0.25em;
+  margin-bottom: 1.5rem;
+}
+.t-article-body code {
+  font-family: "PT Mono", "Ubuntu Mono", Monaco, monospace;
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 0.75rem;
+  line-height: 2;
+  color: var(--c-text);
+  background-color: var(--bg-code--inline);
+  padding: 0.25em;
+  border-radius: 0.25em;
+}
+.t-article-body p.footnote {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  font-family: "Chivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: var(--c-text--10);
+  margin-bottom: 0.1875rem;
+}
+.t-article-body sup a {
+  border: none;
+}
+.t-article-body hr {
+  border: 0;
+  width: 100%;
+  height: 1px;
+  background: rgb(227, 219, 205);
+  background: linear-gradient(90deg, rgb(227, 219, 205) 0%, rgb(227, 219, 205) 20%, rgba(227, 219, 205, 0) 20%, rgba(227, 219, 205, 0) 100%);
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.t-article-data, .t-article-data--tag-count, .t-article-data--snippers, .t-article-data--alt, .t-article-data--link-date, .t-article-data--link-source {
+  font-family: "Chivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 0.75rem;
+  line-height: 2;
+  color: var(--c-text--1000);
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+.t-article-data--link-date, .t-article-data--link-source {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #d95521;
+  font-weight: 700;
+  text-transform: lowercase;
+  letter-spacing: 0;
+}
+.t-article-data--link-source {
+  color: var(--c-text--1000);
+  font-weight: 400;
+}
+.t-article-data--alt {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 0.5625rem;
+  line-height: 2.6666666665;
+}
+.t-article-data--snippers {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 0.75rem;
+  line-height: 2;
+}
+.t-article-data--tag-count {
+  font-weight: 700;
+  color: var(--c-text--alt);
+}
+
+.t-article-list {
+  list-style: decimal;
+}
+.t-article-list__item {
+  margin-bottom: 0;
+}
+.t-article-list__item::marker {
+  font-family: "Chivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 0.75rem;
+  line-height: 2;
+  font-weight: 700;
+  color: var(--c-text--10000);
+}
+
+.t-credits {
+  text-align: right;
+}
+
+.t-date, .t-date--alt {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 1.7777777777rem;
+  line-height: 1.6875000001;
+  font-family: "Chivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  color: var(--c-text--10000);
+}
+.t-date--alt {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.t-footer {
+  font-family: "Chivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: var(--c-text--100);
+}
+.t-footer p {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  margin-bottom: 0.375rem;
+}
+.t-footer a {
+  border-bottom: 1px solid var(--c-link--data);
+}
+.t-footer a:hover {
+  color: var(--c-link--data);
+  border-color: var(--c-text);
+}
+.t-footer--logo {
+  font-family: "Gluten", "Merriweather sans", sans-serif;
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 1rem;
+  line-height: 1.125rem;
+  color: var(--c-logo);
+  font-weight: 652;
+}
+.t-footer--logo__dot {
+  color: #fb743e;
+}
+
+/* ----------------------------------------------------------------------------
+
+HEADINGS
+
+===============================================================================
+03_atoms/_headings.scss
+-------------------------------------------------------------------------------
+
+Basic styles to h1 - h6
+
+---------------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Literata", Georgia, "Times New Roman", serif;
+  font-weight: 800;
+  color: var(--c-text);
+  letter-spacing: -0.04em;
+}
+
+.t-h-up1 {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 1.3333333333rem;
+  line-height: 1.125;
+}
+
+.t-h-up2 {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 1.7777777777rem;
+  line-height: 1.875rem;
+}
+
+.t-h-up3, .t-h-title {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 2.3703703702rem;
+  line-height: 2.25rem;
+}
+
+.t-h-up4 {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 3.1604938268rem;
+  line-height: 3rem;
+}
+
+.t-h-up5 {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 4.213991769rem;
+  line-height: 1.0678710939;
+}
+
+.t-h-up6 {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 5.6186556919rem;
+  line-height: 1.0678710939;
+}
+
+.t-h-base {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.t-h-down1 {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 0.75rem;
+  line-height: 2;
+  font-weight: 400;
+}
+
+.t-h-down2 {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 0.5625rem;
+  line-height: 2.6666666665;
+  font-weight: 400;
+}
+
+.t-h-article-list {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 400;
+  display: inline;
+}
+
+.t-h-section {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 2.3703703702rem;
+  line-height: 1.2656250001;
+  font-family: "Gluten", "Merriweather sans", sans-serif;
+  color: var(--c-heading);
+}
+.t-h-section--sub {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 1.7777777777rem;
+  line-height: 1.6875000001;
+  font-family: "Literata", Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  color: var(--c-heading--10);
+  text-transform: capitalize;
+}
+
+.t-h-tag {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 2.3703703702rem;
+  line-height: 1.2656250001;
+  font-family: "Gluten", "Merriweather sans", sans-serif;
+  color: var(--c-heading);
+}
+
+.t-h-title {
+  font-weight: 900;
+}
+
+.t-h-taxonomy {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 2.3703703702rem;
+  line-height: 1.2656250001;
+  color: var(--c-heading);
+}
+
+.t-h-blog {
+  font-family: "Literata", Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.t-home__title {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 4.213991769rem;
+  line-height: 3rem;
+  font-family: "Gluten", "Merriweather sans", sans-serif;
+  font-weight: 652;
+  color: var(--c-logo);
+  text-align: center;
+  text-shadow: var(--c-shadow);
+}
+.t-home__body {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 1.3333333333rem;
+  line-height: 1.875rem;
+  text-align: center;
+}
+.t-home__nav {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 1.7777777777rem;
+  line-height: 1.875rem;
+  font-family: "Gluten", "Merriweather sans", sans-serif;
+  font-weight: 652;
+  color: #ebf2e8;
+  text-align: center;
+}
+.t-home__nav--alt {
+  color: var(--c-logo);
+}
+.t-home__nav p {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.t-hr {
+  height: 1px;
+  background-color: var(--c-text--1000);
+  box-shadow: var(--c-shadow);
+}
+.t-hr--alt {
+  height: 1px;
+  background-color: var(--c-text--10000);
+  margin-bottom: 1.5rem;
+}
+
+.t-intro {
+  font-family: "Chivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.t-intro p {
+  margin-bottom: 1.5rem;
+}
+.t-intro a {
+  color: var(--c-link--text);
+  border-bottom: 1px solid var(--c-link--text--alt);
+}
+.t-intro a:hover {
+  color: var(--c-link--text--alt);
+  border-bottom: 1px solid var(--c-link--text);
+}
+.t-intro--alt {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 1.3333333333rem;
+  line-height: 1.875rem;
+  font-family: "Chivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.t-link--article-data {
+  font-family: "Chivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: var(--c-text--100);
+  border-bottom: 1px solid var(--c-link--data);
+}
+.t-link--article-data:hover {
+  color: var(--c-link--data--alt);
+  border-color: var(--c-text--100);
+}
+.t-link--artikelen:hover {
+  background: var(--bg-link);
+}
+.t-link--image {
+  display: block;
+  border: 1px solid var(--c-border);
+  margin-bottom: 1.125rem;
+  transition: all 0.3s ease-in-out;
+}
+.t-link--image:hover {
+  opacity: 0.7;
+}
+@media (min-width: 480px) {
+  .t-link--image {
+    margin-bottom: 0;
+  }
+}
+.t-link--snippers:hover {
+  background: var(--bg-link--alt);
+}
+.t-link--gallery {
+  transition: all 0.3s ease-in-out;
+}
+.t-link--gallery:hover {
+  opacity: 0.7;
+}
+
+.t-logo {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 3.1604938268rem;
+  line-height: 2.25rem;
+  font-family: "Gluten", "Merriweather sans", sans-serif;
+  font-weight: 652;
+  color: var(--c-logo);
+  text-shadow: var(--c-shadow);
+}
+
+.t-nav li {
+  font-family: "Chivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.t-nav a {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 1rem;
+  line-height: 2.25rem;
+  color: var(--c-text--alt--10);
+  transition: color 0.3s ease-in-out;
+}
+.t-nav a:hover {
+  color: var(--c-text--alt--100);
+  border-bottom: 2px solid #d95521;
+}
+.t-nav .active {
+  color: var(--c-text--alt);
+  border-bottom: 2px solid #fb743e;
+}
+
+.t-pagination {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 0.75rem;
+  line-height: 2;
+  font-family: "Chivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  color: var(--c-text--1000);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.t-tag {
+  margin-right: 0.1875rem;
+}
+.t-tag:before {
+  content: "#";
+}
+
+strong {
+  font-weight: 900;
+}
+
+em, i {
+  font-style: italic;
+}
+
+small,
+.small {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+}
+
+time,
+.time {
+  text-transform: uppercase;
+}
+
+abbr {
+  font-variant: small-caps;
+  text-transform: lowercase;
+}
+abbr[title]:hover {
+  cursor: help;
+}
+
+sup {
+  vertical-align: super;
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: 0.5625rem;
+  line-height: 0rem;
+}
+
+/* ----------------------------------------------------------------------------
+
+UTILITIES
+
+===============================================================================
+05_utilities/_utilities.scss
+-------------------------------------------------------------------------------
+
+This file is imported in site.scss, so all files in the 05_utilities folder are 
+imported. WARNING: do not import files in the 03_objects folder directly into 
+site.scss
+
+---------------------------------------------------------------------------- */
+.js-modal {
+  display: none;
+}
+
+.js-modal--visible {
+  display: block;
+}
+
+.u-article-body .full {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+.u-article-body .half {
+  width: 100%;
+  /*
+      &--left {
+        @extend .half;
+        float: left;
+        margin-right: vr(4);
+      }
+
+      &--right {
+        @extend .half;
+        float: right;
+        margin-left: vr(4);
+      }*/
+}
+@media (min-width: 768px) {
+  .u-article-body .half {
+    width: 50%;
+    justify-self: end;
+    margin-left: 1.5rem;
+  }
+}
+.u-article-body .third, .u-article-body .third--right, .u-article-body .third--left {
+  width: 33%;
+}
+.u-article-body .third--left {
+  float: left;
+  margin-right: 1.5rem;
+}
+.u-article-body .third--right {
+  float: right;
+  margin-left: 1.5rem;
+}
+
+/* --------------------------------------------------------------
+
+ Hartija Css Print  Framework
+   * Version:   1.0
+
+-------------------------------------------------------------- */
+@media print {
+  body {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.45;
+    font-family: Garamond, "Times New Roman", serif;
+    color: #000;
+    background: none;
+    font-size: 14pt;
+  }
+
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+  }
+
+  h1 {
+    font-size: 19pt;
+  }
+
+  h2 {
+    font-size: 17pt;
+  }
+
+  h3 {
+    font-size: 15pt;
+  }
+
+  h4, h5, h6 {
+    font-size: 14pt;
+  }
+
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  code {
+    font: 12pt Courier, monospace;
+  }
+
+  blockquote {
+    margin: 1.2em;
+    padding: 1em;
+    font-size: 12pt;
+  }
+
+  hr {
+    background-color: #ccc;
+  }
+
+  /* Images */
+  img {
+    float: left;
+    margin: 1em 1.5em 1.5em 0;
+    max-width: 100% !important;
+  }
+
+  a img {
+    border: none;
+  }
+
+  /* Links */
+  a:link, a:visited {
+    background: transparent;
+    font-weight: 700;
+    text-decoration: underline;
+    color: #333;
+  }
+
+  a:link[href^="http://"]:after, a[href^="http://"]:visited:after {
+    content: " (" attr(href) ") ";
+    font-size: 90%;
+  }
+
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  /* Don't show linked images  */
+  a[href^="http://"] {
+    color: #000;
+  }
+
+  a[href$=".jpg"]:after, a[href$=".jpeg"]:after, a[href$=".gif"]:after, a[href$=".png"]:after {
+    content: " (" attr(href) ") ";
+    display: none;
+  }
+
+  /* Don't show links that are fragment identifiers, or use the `javascript:` pseudo protocol .. taken from html5boilerplate */
+  a[href^="#"]:after, a[href^="javascript:"]:after {
+    content: "";
+  }
+
+  /* Table */
+  table {
+    margin: 1px;
+    text-align: left;
+  }
+
+  th {
+    border-bottom: 1px solid #333;
+    font-weight: bold;
+  }
+
+  td {
+    border-bottom: 1px solid #333;
+  }
+
+  th, td {
+    padding: 4px 10px 4px 0;
+  }
+
+  tfoot {
+    font-style: italic;
+  }
+
+  caption {
+    background: #fff;
+    margin-bottom: 2em;
+    text-align: left;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  img, tr {
+    page-break-inside: avoid;
+  }
+
+  /* Hide various parts from the site
+  #header, #footer, #navigation, #rightSideBar, #leftSideBar
+  {display:none;}
+  */
+}/*# sourceMappingURL=site.css.map */

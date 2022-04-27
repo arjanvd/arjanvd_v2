@@ -1,0 +1,21 @@
+.o-logo {
+  display: inline-block;
+  margin-bottom: vr(2);
+  
+  &__link {
+    color: var(--c-logo);
+    /*
+    &:visited { opacity: 1; }
+    &:hover { 
+      color: var(--c-text--10); 
+    }
+    &:focus { opacity: 0.5; }
+    &:active { opacity: 0.8; }*/
+  
+    &--dot {
+      color: $carrot;
+      &:hover { color: $blue; }
+    }
+  }
+}
+

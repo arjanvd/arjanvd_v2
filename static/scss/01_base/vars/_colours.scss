@@ -1,0 +1,223 @@
+// Light background - https://colorhunt.co/palette/c5d7bd9fb8ad383e56fb743e; names based on https://hue.tools
+
+$nature: #c5d7bd;
+$stormy-bay: #9fb8ad;
+$dark-and-stormy: #383e56;
+$carrot: #fb743e;
+
+// Lighten (tint palette on https://fffuel.co/pppalette/)
+
+$nature-l10: #c4d7bc;     $stormy-bay-l10: #9eb7ad;     $dark-and-stormy-l10: #383e56;      $carrot-l10: #fb723c;
+$nature-l20: #cedec7;     $stormy-bay-l20: #aec3ba;     $dark-and-stormy-l20: #565b70;      $carrot-l20: #ff8b5c;
+$nature-l30: #d8e4d2;     $stormy-bay-l30: #becfc8;     $dark-and-stormy-l30: #76798b;      $carrot-l30: #ffa27b;
+$nature-l40: #e1ebdd;     $stormy-bay-l40: #cedbd5;     $dark-and-stormy-l40: #9699a7;      $carrot-l40: #ffba9b;
+$nature-l50: #ebf2e8;     $stormy-bay-l50: #dee7e3;     $dark-and-stormy-l50: #b8bac3;      $carrot-l50: #ffd1bc;
+$nature-l60: #f5f8f4;     $stormy-bay-l60: #eef3f1;     $dark-and-stormy-l60: #dbdce1;      $carrot-l60: #ffe8dd;
+
+// Darken (shade pallette on https://fffuel.co/pppalette/)
+
+$nature-d10: #c4d7bc;     $stormy-bay-d10: #9eb7ad;     $dark-and-stormy-d10: #383e56;      $carrot-d10: #fb723c;
+$nature-d20: #9eb096;     $stormy-bay-d20: #7e978d;     $dark-and-stormy-d20: #2e344c;      $carrot-d20: #d95521;
+$nature-d30: #7a8b72;     $stormy-bay-d30: #60786e;     $dark-and-stormy-d30: #242b41;      $carrot-d30: #b73802;
+$nature-d40: #576850;     $stormy-bay-d40: #435a51;     $dark-and-stormy-d40: #1a2137;      $carrot-d40: #961800;
+$nature-d50: #364631;     $stormy-bay-d50: #283e36;     $dark-and-stormy-d50: #11192e;      $carrot-d50: #770000;
+$nature-d60: #182713;     $stormy-bay-d60: #0f231c;     $dark-and-stormy-d60: #070e24;      $carrot-d60: #5a0000;
+
+
+// Dark background - https://colorhunt.co/palette/f0a500334756082032000000; names based on https://hue.tools
+
+$mad-for-mango: #F0A500;
+$nocturne: #334756;
+$trapped-darkness: #082032;
+$black-sheep: #0f0f0f;
+
+// Lighten (by increasing luminance on hue.tools)
+// steps of 8%                      steps of 11%                   steps of 14%
+$mad-for-mango-l10: #ffb71a;      $nocturne-l10: #486479;      $trapped-darkness-l10: #124770;
+$mad-for-mango-l20: #ffc443;      $nocturne-l20: #5d819c;      $trapped-darkness-l20: #1c6fad;
+$mad-for-mango-l30: #ffd16b;      $nocturne-l30: #7f9cb3;      $trapped-darkness-l30: #3294de;
+$mad-for-mango-l40: #ffde94;      $nocturne-l40: #a2b7c8;      $trapped-darkness-l40: #70b4e8;
+$mad-for-mango-l50: #ffeabd;      $nocturne-l50: #c5d2dd;      $trapped-darkness-l50: #add4f2;
+$mad-for-mango-l60: #fff7e6;      $nocturne-l60: #e8edf1;      $trapped-darkness-l60: #ebf4fc;
+
+// Darken (by decreasing brightness on hue.tools)
+// steps of 8%                      steps of 5%                    steps of 2%
+$mad-for-mango-d10: #c78900;      $nocturne-d10: #2a3a46;      $trapped-darkness-d10: #071a29;
+$mad-for-mango-d20: #9e6d00;      $nocturne-d20: #202d36;      $trapped-darkness-d20: #051520;
+$mad-for-mango-d30: #765100;      $nocturne-d30: #171f26;      $trapped-darkness-d30: #040f18;
+$mad-for-mango-d40: #4d3500;      $nocturne-d40: #0d1216;      $trapped-darkness-d40: #02090f;
+$mad-for-mango-d50: #241900;      $nocturne-d50: #040506;      $trapped-darkness-d50: #010406;
+
+
+
+
+// Light background
+
+$white: #F3F3ED;
+$creme: #E2E2D4;
+$olive: #4C472F;
+$blue: #2E4C52;
+$bordeaux: #441800;
+$pink: #8F0040;
+$black: #101010;
+
+//background-image: linear-gradient(to left top, #fffaf6, #fff9f3, #fff7f0, #fff6ee, #fff4eb);
+$light-white: #F3F3ED;
+$light-creme: #E2E2D4;
+$light-olive: #4C472F;
+$light-blue: #2E4C52;
+$light-bordeaux: #441800;
+$light-pink: #8F0040;
+$light-black: #101010;
+
+$link-color-light: #AD3D00;
+
+// Dark background
+
+// background-image: linear-gradient(to left top, #1f0900, #1c0a0c, #170c12, #120f13, #101010);
+//$dark-brown: #1F0900;
+$dark-black: #101010;
+$dark-olive: #E8DFD4;
+$dark-blue: #D7E1EA;
+$dark-bordeaux: #FFD7C2;
+$dark-pink: #FFD6EA;
+$dark-white: #E2E2D4;
+
+$link-color-dark: #FA8DED;
+
+// Tinting and shading of colors, building a color pallette: https://scotch.io/tutorials/aesthetic-sass-2-colors
+
+$color-interval: 10%;
+
+@function color($color-name: $primary, $level: 0) {
+  $color: $color-name;
+  $color-base: if($level < 0, black, white);
+
+  @return mix($color-base, $color, abs( $level ) * $color-interval);
+}
+
+/* Example:
+.panel {
+  background-color: color($primary, 2);
+} */
+
+// Olive to dark
+
+$olive-d10: #907a4f;
+$olive-d20: #806d46;
+$olive-d30: #705f3e;
+$olive-d40: #605235;
+$olive-d50: #50442c;
+$olive-d60: #403623;
+$olive-d70: #30291a;
+$olive-d80: #201b12;
+$olive-d90: #100e09;
+
+// Olive to light
+
+$olive-l10: #aa9469;
+$olive-l20: #b3a079;
+$olive-l30: #bdac8a;
+$olive-l40: #c6b89b;
+$olive-l50: #d0c4ac;
+$olive-l60: #d9cfbc;
+$olive-l70: #e3dbcd;
+$olive-l80: #ece7de;
+$olive-l90: #f6f3ee;
+
+// Blue to dark
+
+$blue-d10: #537e97;
+$blue-d20: #4a7086;
+$blue-d30: #406276;
+$blue-d40: #375465;
+$blue-d50: #2e4654;
+$blue-d60: #253843;
+$blue-d70: #1c2a32;
+$blue-d80: #121c22;
+$blue-d90: #090e11;
+
+// Blue to light
+
+$blue-l10: #6c98b1;
+$blue-l20: #7da3b9;
+$blue-l30: #8dafc2;
+$blue-l40: #9dbacb;
+$blue-l50: #aec6d4;
+$blue-l60: #bed1dc;
+$blue-l70: #cedde5;
+$blue-l80: #dee8ee;
+$blue-l90: #eff4f6;
+
+// Brown to dark
+
+$brown-d10: #3d1600;
+$brown-d20: #361300;
+$brown-d30: #301100;
+$brown-d40: #290e00;
+$brown-d50: #220c00;
+$brown-d60: #1b0a00;
+$brown-d70: #140700;
+$brown-d80: #0e0500;
+$brown-d90: #070200;
+
+// Brown to light
+
+$brown-l10: #572f19;
+$brown-l20: #694633;
+$brown-l30: #7c5d4d;
+$brown-l40: #8f7466;
+$brown-l50: #a28c80;
+$brown-l60: #b4a399;
+$brown-l70: #c7bab3;
+$brown-l80: #dad1cc;
+$brown-l90: #ece8e6;
+
+// Pink to dark
+
+$pink-d10: #900041;
+$pink-d20: #80003a;
+$pink-d30: #700032;
+$pink-d40: #60002b;
+$pink-d50: #500024;
+$pink-d60: #40001d;
+$pink-d70: #300016;
+$pink-d80: #20000e;
+$pink-d90: #100007;
+
+// Pink to light
+
+$pink-l10: #aa195a;
+$pink-l20: #b3336d;
+$pink-l30: #bd4d7f;
+$pink-l40: #c66691;
+$pink-l50: #d080a4;
+$pink-l60: #d999b6;
+$pink-l70: #e3b3c8;
+$pink-l80: #ecccda;
+$pink-l90: #f6e6ed;
+$pink-l95: #fbf3f6;
+
+// Black to white
+
+$black-l10: #282828;
+$black-l20: #404040;
+$black-l30: #585858;
+$black-l40: #707070;
+$black-l50: #888888;
+$black-l60: #9f9f9f;
+$black-l70: #b7b7b7;
+$black-l80: #cfcfcf;
+$black-l90: #e7e7e7;
+
+// White to black
+
+$white-d10: #cbcbbf;
+$white-d20: #b5b5aa;
+$white-d30: #9e9e94;
+$white-d40: #88887f;
+$white-d50: #71716a;
+$white-d60: #5a5a55;
+$white-d70: #444440;
+$white-d80: #2d2d2a;
+$white-d90: #171715;

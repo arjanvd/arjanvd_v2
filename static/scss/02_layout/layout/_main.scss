@@ -1,0 +1,14 @@
+.l-main {
+	margin-left: var(--m-side);
+	margin-right: var(--m-side);
+	margin-top: vr(4);
+	margin-bottom: vr(6);
+	max-width: 46rem;
+
+	&--snippers {
+		margin-left: var(--m-side);
+		margin-right: var(--m-side);
+		margin-top: vr(4);
+		margin-bottom: vr(6);
+	}
+}

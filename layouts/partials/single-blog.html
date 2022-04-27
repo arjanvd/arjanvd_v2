@@ -1,0 +1,35 @@
+<article itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting" class="mb-6">
+    <meta itemprop="mainEntityOfPage" content="{{ .Permalink }}">
+    <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject" class="l-image">
+      
+        {{ if .Page.Resources.GetMatch "*hero*.jpg" }}
+
+        <img itemprop="url" class="o-image"
+            srcset="{{ .RelPermalink }}{{ $.Param "image" }}_hero_S.jpg 640w, 
+            {{ .RelPermalink }}{{ $.Param "image" }}_hero_M.jpg 768w,
+                    {{ .RelPermalink }}{{ $.Param "image" }}_hero_L.jpg 1024w,
+                    {{ .RelPermalink }}{{ $.Param "image" }}_hero_XL.jpg 1200w"
+            src="{{ .RelPermalink }}{{ $.Param "image" }}_hero_M.jpg" alt="{{ with $.Param "image_alt" }}{{ . }}{{ else }}{{ .Title }}{{ end }}" 
+        />
+        {{ end }}
+        {{ with $.Param "credits-name" }}
+        <div class="t-credits t-article-data--alt">
+          Credits: {{ if $.Param "credits-link" }}
+                      <a href="{{ $.Param "credits-link" }}" class="t-link--article-data">{{ $.Param "credits-name" }}</a>
+                    {{ else }}
+                      <span>{{ $.Param "credits-name" }}</span>
+                    {{ end }}
+        </div>
+        {{ end }}
+    </div>
+    <h2 itemprop="headline" class="mb-1 t-h-up3">{{ .Title }}</h2>
+    <div class="mb-3 t-article-data">
+      {{ partial "article-metadata.html" . }}  
+    </div>
+    <div itemprop="articleBody" class="l-article-body t-article-body u-article-body mb-4">
+      {{ .Content }}
+    </div>
+    {{ partial "series.html" . }}
+    {{ partial "tags.html" . }}
+  </article>
+  <div class="t-hr--alt">&nbsp;</div>

@@ -1,0 +1,38 @@
+img {
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.o-image {
+  box-shadow: var(--c-shadow);
+  &--button { // needed for accessible gallery on foto/single.html and list.html 
+    @extend .o-image;
+    cursor: pointer;
+    transition: all .5s ease;
+    &:hover {
+      box-shadow: none;
+      opacity: .9;
+    }
+  }
+}
+
+.o-img--cover,
+.o-img--hero {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.o-img--illustration {
+  width: 100%;
+  background: var(--bg-bq);
+  border: 1px solid var(--c-border);
+}
+
+.o-img--border {
+  border: 1px solid var(--c-border);
+}
+
+
+  

@@ -1,0 +1,64 @@
+{{ define "main" }}
+<main itemscope itemtype="https://schema.org/Blog" class="g-wrapper__main">
+
+  <article itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <meta itemprop="mainEntityOfPage" content="{{ .Permalink }}">
+    <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject" class="l-image">
+      
+      {{ with .Resources.GetMatch "*hero*.jpg" }}
+
+        <img itemprop="url" class="o-image"
+          srcset="{{ $.Param "image" }}_hero_S.jpg 640w, 
+                  {{ $.Param "image" }}_hero_M.jpg 768w,
+                  {{ $.Param "image" }}_hero_L.jpg 1024w,
+                  {{ $.Param "image" }}_hero_XL.jpg 1200w"
+          src="{{ $.Param "image" }}_hero_M.jpg" alt="{{ with $.Param "image_alt" }}{{ . }}{{ else }}{{ .Title }}{{ end }}" 
+        />
+          
+      {{ end }}
+      {{ with $.Param "credits-name" }}
+      <div class="t-credits t-article-data--alt">
+        Credits: {{ if $.Param "credits-link" }}
+                    <a href="{{ $.Param "credits-link" }}" class="t-link--article-data">{{ $.Param "credits-name" }}</a>
+                  {{ else }}
+                    <span>{{ $.Param "credits-name" }}</span>
+                  {{ end }}
+      </div>
+      {{ end }}
+    </div>
+    <h2 itemprop="headline" class="mb-1 t-h-up3">{{ .Title }}</h2>
+    <div class="mb-3 t-article-data">
+      {{ partial "article-metadata.html" . }}  
+    </div>
+    <div itemprop="articleBody" class="l-article-body t-article-body u-article-body mb-4">
+      {{ .Content }}
+    </div>
+    {{ partial "series.html" . }}
+    {{ partial "tags.html" . }}
+  </article>
+
+</main>
+<div class="mb-4 t-hr">&nbsp;</div>
+<h2 class="t-h-section mb-4">Andere artikelen</h2>
+<div class="mb-10 g-default--small">
+  {{ range (shuffle (where (where .Site.RegularPages "Section" "blog") "Title" "!=" .Title)) | first 12 }}
+	  <div class="t-article-body--alt">
+      <a href="{{ .RelPermalink }}">
+        <strong>{{ .Title }}</strong> &middot; 
+        <span>
+          {{ .Summary | markdownify }}
+        </span> 
+      </a>
+      {{ $taxonomy := "tags" }}
+      {{ with .Param $taxonomy }}
+        {{ range $index, $tag := . }}
+          {{ if gt $index 0 }} {{ end }}
+          {{ with $.Site.GetPage (printf "/%s/%s" $taxonomy ($tag | anchorize )) }}
+            <a href="{{ .Permalink }}" class="t-link--article-data t-tag">{{ $tag }}</a>
+          {{ end }}
+        {{ end }}
+      {{ end }}   
+    </div>
+	{{ end }}
+</div>
+{{ end }}

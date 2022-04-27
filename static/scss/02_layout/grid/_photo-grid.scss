@@ -1,0 +1,28 @@
+.g-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: vr(2);
+    
+    @include bp(x-small) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include bp(medium) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include bp(x-large) {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    &__in-article {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: vr(2);
+    
+        @include bp(x-small) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+}

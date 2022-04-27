@@ -1,0 +1,4 @@
+<figure {{ with .Get "class"}}class="{{.}} mb-2"{{else}}class="mb-4"{{ end }}>
+  <img src="{{ (.Get "src") }}" {{ if or (.Get "alt") (.Get "figcaption") }}alt="{{ with .Get "alt"}}{{.}}{{else}}{{ .Get "figcaption" }}{{ end }}"{{ end }} />
+  {{ with .Get "figcaption" }}<figcaption class="mt-1 t-figcaption">{{ . | markdownify }}</figcaption>{{ end }}
+</figure>

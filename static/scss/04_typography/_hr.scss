@@ -1,0 +1,11 @@
+.t-hr {
+    height: 1px;
+    background-color: var(--c-text--1000);
+    box-shadow: var(--c-shadow);
+
+    &--alt {
+        height: 1px;
+        background-color: var(--c-text--10000);
+        margin-bottom: vr(4);
+    }
+}

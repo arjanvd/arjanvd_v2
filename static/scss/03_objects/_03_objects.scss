@@ -1,0 +1,60 @@
+/* ----------------------------------------------------------------------------
+
+OBJECTS
+
+===============================================================================
+03_objects/_objects.scss
+-------------------------------------------------------------------------------
+
+From https://zellwk.com/blog/css-architecture-2/:
+
+Objects (.o-) are the smallest building blocks of a website. Consider them to 
+be Lego blocks where you can copy-paste anywhere in your website. Objects have 
+the following properties:
+[a] Objects uses the .o- prefix
+[b] They cannot contain other objects or components.
+[c] They are context independent.
+
+Additions:
+[a] Example: .o-object
+[b] Objects can be small or large. The number of HTML elements within the 
+    object isn’t relevant. All inner elements can only exist within the 
+    specific object.
+[c] Objects are context independent. They don’t know where they’re used. You 
+    could pick any object up, throw it somewhere else and it won’t break the
+    structure of your site. This also means objects should not change any 
+    structure outside itself. 
+
+--
+
+This file is imported in site.scss, so all files in the 03_objects folder are 
+imported. WARNING: do not import files in the 03_objects folder directly into 
+site.scss
+
+---------------------------------------------------------------------------- */
+
+@import "article-list";
+@import "article-data";
+@import "article";
+@import "html";
+@import "body";
+@import "date";
+@import "embed";
+@import "figure";
+@import "gallery";
+@import "home";
+@import "icon";
+@import "image";
+@import "dialog";
+@import "logo";
+@import "sidenote";
+@import "switch";
+@import "tags";
+@import "tooltip";
+@import "toc";
+
+
+
+//@import "comment";
+//@import "comment-form";
+

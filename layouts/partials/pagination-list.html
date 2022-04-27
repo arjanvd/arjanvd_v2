@@ -1,0 +1,75 @@
+<nav aria-label="Page navigation">
+    {{ if gt .p.TotalPages 1 }}
+    <div class="l-pagination t-pagination">
+     
+    <!-- Indicator Number. -->
+    <div class="l-pagination__indicator">
+      Pagina {{ .p.PageNumber }} van {{ .p.TotalPages }}
+    </div> 
+    
+      <!-- First Page. -->
+      {{ if not (eq .p.PageNumber 1) }}
+        <a rel="first" href="{{ .p.First.URL }}">
+            <i class="o-icon--nav"> <!-- tabler-icons.io chevrons-left -->
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="11 7 6 12 11 17"/><polyline points="17 7 12 12 17 17"/></svg>
+            </i>
+        </a>
+      {{ else }}
+      <div class="l-pagination__item">
+        <i class="o-icon--nav"> <!-- tabler-icons.io chevrons-left -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="11 7 6 12 11 17"/><polyline points="17 7 12 12 17 17"/></svg>
+        </i>
+      </div>
+      {{ end }}
+  
+      <!-- Previous Page. -->
+      {{ if .p.HasPrev }}
+        <a rel="prev" href="{{ .p.Prev.URL }}">
+          <i class="o-icon--nav"> <!-- tabler-icons.io chevron-left -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="15 6 9 12 15 18"/></svg>
+          </i>
+        </a>
+      {{ else }}
+      <div class="l-pagination__item">
+        <i class="o-icon--nav"> <!-- tabler-icons.io chevron-left -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="15 6 9 12 15 18"/></svg>
+        </i>
+      </div>
+      {{ end }}
+  
+  
+  
+      <!-- Next Page. -->
+      {{ if .p.HasNext }}
+        <a rel="next" href="{{ .p.Next.URL }}">
+          <i class="o-icon--nav"> <!-- tabler-icons.io chevrons-right -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="9 6 15 12 9 18"/></svg>
+          </i>
+        </a>
+      {{ else }}
+      <div class="l-pagination__item">
+        <i class="o-icon--nav"> <!-- tabler-icons.io chevron-right -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="9 6 15 12 9 18"/></svg>
+        </i>
+      </div>
+      {{ end }}
+  
+      <!-- Last Page. -->
+      {{ if not (eq .p.PageNumber .p.TotalPages) }}
+        <a rel="last" href="{{ .p.Last.URL }}">
+          <i class="o-icon--nav"> <!-- tabler-icons.io chevrons-right -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="7 7 12 12 7 17"/><polyline points="13 7 18 12 13 17"/></svg>
+          </i>
+        </a>
+      {{ else }}
+      <div class="l-pagination__item">
+        <i class="o-icon--nav"> <!-- tabler-icons.io chevrons-right -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="7 7 12 12 7 17"/><polyline points="13 7 18 12 13 17"/></svg>
+        </i>
+      </div>
+      {{ end }}
+    
+    </div>
+    {{ end }}
+  
+  </nav>

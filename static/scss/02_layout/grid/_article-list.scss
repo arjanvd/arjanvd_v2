@@ -1,0 +1,25 @@
+.g-article-list {
+    // on article list ( /blog/ )
+    @include bp(large) {
+        display: grid;
+		grid-template-columns: 
+            [side-l-start] 11rem [side-l-end main-start] 25rem [main-end];
+    }
+
+    &__title {
+        
+        @include bp(large) {
+            grid-column: main;
+        }
+    }
+
+    &__aside {
+        
+        @include bp(large) {
+            grid-column: side-l;
+            margin: 0 vr(3) 0 0;
+            //padding: vr(.75) 0 vr(1) vr(2);
+        }
+    }
+
+}

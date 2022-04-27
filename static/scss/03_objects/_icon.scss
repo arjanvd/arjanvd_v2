@@ -1,0 +1,117 @@
+.o-icon {
+  /*
+  &--home {
+    display: inline-block;
+    color: var(--c-text--50);
+    width: $ms-base;
+    height: $ms-base;
+  }
+  
+  &--nav, &--separator {
+    display: inline-block;
+    color: var(--c-text--50);
+    width: $ms-down1;
+    height: $ms-down1;
+  }
+  &--nav svg, &--home svg {
+    vertical-align: text-bottom;
+  }
+  &--separator svg {
+    vertical-align: middle;
+  }
+  
+  &--sm {
+    width: vr(3);
+    height: vr(3);
+    margin-right: vr(2);
+  }
+  
+  /*&--tag {
+    display: inline-block;
+    //align-self: center;
+    width: $ms-up1;
+    height: $ms-up1;
+    fill: var(--gradient-icon);
+  }
+  &--tags {
+    display: inline-block;
+    //color: var(--c-text--50);
+    width: $ms-down1;
+    height: $ms-down1;
+    //vertical-align: text-bottom;
+  }
+  
+  &-link {
+    display: inline-block;
+    color: var(--c-text--80);
+
+    &:hover { color: var(--c-text--60); }
+    &:visited, &:active { color: var(--c-text--50); }
+  
+  } */
+  
+  &--art-data, &--tag, &--nav {
+    display: inline-flex;
+    align-self: center;
+  }
+  &--art-data svg,
+  &--nav svg { // https://codepen.io/elliotdahl/pen/ygYrvm
+    width: $ms-down1;
+    height: $ms-down1;
+    top: .1rem;
+    position: relative;
+    padding-right: vr(.2);
+    color: var(--c-text--alt--10);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  &--nav svg {
+    color: var(--c-text--100);
+  }
+
+  &--tag svg { // https://codepen.io/elliotdahl/pen/ygYrvm
+    width: $ms-up3;
+    height: $ms-up3;
+    top: .1rem;
+    position: relative;
+    padding-right: vr(.5);
+    color: $carrot-d20; 
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  &--gallery-anchor {
+    display: block;
+    position: relative;
+  }
+  &--gallery {
+    width: $ms-base;
+    height: $ms-base;
+    position: absolute;
+    bottom: vr(1);
+    right: vr(1);
+    color: $nature-l60;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  &--close {
+    width: $ms-up1;
+    height: $ms-up1;
+    position: absolute;
+    top: vr(2);
+    right: vr(2);
+    color: $nature-l60;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+}

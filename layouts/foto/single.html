@@ -1,0 +1,36 @@
+{{ define "main" }}
+<main itemscope itemtype="https://schema.org/CreativeWork" class="g-wrapper__main">
+  <article itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting" class="mb-10">
+    <meta itemprop="mainEntityOfPage" content="{{ .Permalink }}">
+    <div class="t-date">
+        {{ partial "date-numbers.html" . }}  
+    </div>
+    <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject" class="mb-2 o-image">
+    
+    {{ with .Resources.GetMatch "**.jpg" }}
+
+      <img itemprop="url" class=""
+        srcset="{{ $.Param "image" }}_XXS.jpg 640w, 
+                {{ $.Param "image" }}_XS.jpg 768w,
+                {{ $.Param "image" }}_S.jpg 1024w,
+                {{ $.Param "image" }}_M.jpg 1366w,
+                {{ $.Param "image" }}_L.jpg 1600w,
+                {{ $.Param "image" }}_XL.jpg 1920w,
+                {{ $.Param "image" }}_XXL.jpg 2400w"
+        src="{{ $.Param "image" }}_XS.jpg" alt="{{ with $.Param "image_alt" }}{{ . }}{{ else }}{{ .Title }}{{ end }}" 
+      />
+        
+    {{ end }}
+    </div>
+      <h2 itemprop="headline" class="mb-4 t-h-up3">{{ .Title }}</h2>
+      <div itemprop="articleBody" class="l-article-body t-article-body u-article-body mb-4">
+        {{ .Content }}
+      </div>
+      {{ partial "series.html" . }}
+      {{ partial "tags.html" . }}
+  </article>
+
+  {{ partial "pagination-single.html" . }}
+
+</main>
+{{ end }}

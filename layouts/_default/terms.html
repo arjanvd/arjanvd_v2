@@ -1,0 +1,16 @@
+{{ define "main" }}
+
+<h2 class="mb-6 t-h-section">{{ .Title }}</h2>
+  <div class="o-tag">
+  {{ range .Data.Terms.Alphabetical }}
+      <span class="o-tag__item mr-4">
+        <a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a>
+        <span class="t-tag__item--dot">&middot;</span>
+        <span class="t-tag__item--count">{{ .Count }}</span>
+      </span>
+  {{ end }}
+  </div>
+  
+{{ end }}
+
+

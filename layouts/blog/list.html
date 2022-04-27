@@ -1,0 +1,21 @@
+{{ define "main" }}
+<main itemscope itemtype="https://schema.org/Blog" class="g-wrapper__main">
+
+{{ .Content }}
+
+{{ $paginator := .Paginate (where .Site.RegularPages "Section" "blog") 8 }}
+
+{{ partial "pagination-list--top.html" (dict "p" $paginator) }}
+
+{{ range $paginator.Pages }}
+  {{ partial "single-blog.html" . }}
+{{ end }}
+
+{{ partial "pagination-list.html" (dict "p" $paginator) }}
+
+</main>
+
+
+
+{{ end }}
+

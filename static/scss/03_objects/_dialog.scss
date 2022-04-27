@@ -1,0 +1,50 @@
+/**
+Make the dialog container, and its child overlay spread across
+the entire window.
+ */
+.dialog-container,
+.dialog-overlay {
+   position: fixed; 
+   top: 0; 
+   right: 0; 
+   bottom: 0; 
+   left: 0; 
+}
+ 
+.dialog-container {
+  z-index: 999; 
+
+  &[aria-hidden='true'] {
+    display: none; /* 1 */
+  }
+}
+ 
+.dialog-overlay {
+  background: rgba(5, 11, 27, .9);
+}
+ 
+.dialog-button {
+   display: block;
+   width: $ms-up4;
+   height: $ms-up4;
+ }
+ 
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  //max-width: 1200px;
+  //height: 100vh;
+  margin: 0 auto;
+  z-index: 999;
+  position: relative; 
+
+  & img {
+          width: auto;
+          max-width: 1200px;
+          height: auto;
+          //max-width: 100%;
+          max-height: 90vh;
+  }
+}

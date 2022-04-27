@@ -1,0 +1,15 @@
+<nav itemscope itemtype="https://schema.org/SiteNavigationElement" class="l-nav t-nav">
+  <ul>
+    {{ range .Site.Menus.main }}
+            {{ if eq $.Kind "home" }}
+                {{ $.Scratch.Set "active" ($.IsMenuCurrent "main" .) }}
+            {{ else }}
+                {{ $.Scratch.Set "active" (eq .Identifier $.Type) }}
+            {{ end }}
+            {{ $active := $.Scratch.Get "active" }}
+      <li>
+        <a class="{{ if $active }}active{{end}}" href="{{ .URL }}" title="{{ .Title }}">{{ .Name }}</a>
+      </li>
+    {{ end }}
+  </ul>
+</nav>

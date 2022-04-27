@@ -1,0 +1,35 @@
+.g-wrapper {
+  display: grid;
+  grid-template-rows: min-content minmax(10px, 1fr) min-content;
+  width: 100%;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 0 var(--p-side);
+
+  &__header {
+    margin-top: vr(3);
+    margin-bottom: vr(8);
+  }
+  &__main {
+    margin-bottom: vr(10);
+  }
+  
+  &--small {
+    @extend .g-wrapper;
+    max-width: 1200px;
+  }
+
+  &--large {
+    @extend .g-wrapper;
+    max-width: 1920px;
+
+    & .g-wrapper__header,
+    & .g-wrapper__footer {
+      width: 100%;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 var(--p-side);
+    }
+  }
+}

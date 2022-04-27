@@ -1,0 +1,37 @@
+/* ----------------------------------------------------------------------------
+
+LAYOUT
+
+===============================================================================
+02_layout/_02_layout.scss
+-------------------------------------------------------------------------------
+
+A portion of CSS is structural layout.
+
+This file is imported in site.scss, so all files in the 02_layout folder are 
+imported. WARNING: do not import files in the 02_layout folder directly into 
+site.scss
+
+---------------------------------------------------------------------------- */
+
+// Grids
+@import "grid/article";
+@import "grid/article-list";
+@import "grid/blog--body";
+@import "grid/blog--snippers";
+@import "grid/blog";
+@import "grid/default";
+@import "grid/home";
+@import "grid/photo-grid";
+@import "grid/photo";
+@import "grid/wrapper";
+
+// Lay-out
+
+@import "layout/article-body"; //
+@import "layout/footer";
+@import "layout/main";
+@import "layout/nav";
+@import "layout/pagination";
+@import "layout/switch";
+@import "layout/title";

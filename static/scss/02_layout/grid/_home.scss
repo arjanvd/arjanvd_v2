@@ -1,0 +1,35 @@
+.g-home {
+    display: grid;
+    grid-template-rows: minmax(10px, 1fr) min-content;
+    width: 100%;
+    max-width: 1200px;
+    min-height: 100%;
+    margin: 0 auto;
+    padding: vr(4) var(--p-side);
+
+        @include bp(large) {
+            grid-template-rows: auto;
+            grid-template-columns: 32rem 1fr;
+            gap: vr(4);
+        }
+
+    &__content {
+        display: grid;
+        grid-template-rows: min-content 2fr 3fr;
+    }
+    &__title {
+        justify-self: center;
+        align-self: center;
+    }
+
+    &__nav {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: vr(4);
+
+        @include bp(large) {
+            grid-template-columns: auto;
+            grid-template-rows: repeat(4, 1fr);
+        }
+    }
+}

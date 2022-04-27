@@ -1,0 +1,11 @@
+{{ define "main" }}
+<main itemscope itemtype="https://schema.org/CreativeWork" class="g-wrapper__main">
+  <article itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <meta itemprop="mainEntityOfPage" content="{{ .Permalink }}">
+
+    {{ partial "article-link.html" . }}
+
+    {{ partial "pagination-single.html" . }}
+
+</main>
+{{ end }}

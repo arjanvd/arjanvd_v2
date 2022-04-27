@@ -1,0 +1,31 @@
+<div class="g-photo-grid__in-article">
+    {{ range .Page.Params.resources }}
+    <button class="o-image--button" data-a11y-dialog-show="modal-{{ .src }}">
+      <img src="media/{{ .src }}_sq.jpg" alt="{{ .alt }}" />
+    </button>
+  
+    <div class="dialog-container" aria-hidden="true" data-a11y-dialog="modal-{{ .src }}">
+      <div data-a11y-dialog-hide class="dialog-overlay"></div>
+      <div role="document">
+        <button type="button" data-a11y-dialog-hide aria-label="Close dialog">
+          <div class="o-icon--close"><!-- https://tabler-icons.io close -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z"/><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+          </div>
+        </button>
+        <figure class="dialog-content">
+          <img itemprop="url" class=""
+          srcset="media/{{ .src }}_XXS.jpg 640w, 
+                  media/{{ .src }}_XS.jpg 768w,
+                  media/{{ .src }}_S.jpg 1024w,
+                  media/{{ .src }}_M.jpg 1366w,
+                  media/{{ .src }}_L.jpg 1600w,
+                  media/{{ .src }}_XL.jpg 1920w,
+                  media/{{ .src }}_XXL.jpg 2400w"
+          src="media/{{ .src }}_XS.jpg" alt="{{ .alt }}" 
+          />
+          {{ with .figcaption }}<figcaption class="mt-1 t-figcaption--img-container">{{ . }}</figcaption>{{ end }}
+      </figure>
+      </div>
+    </div>
+    {{ end }}
+</div>

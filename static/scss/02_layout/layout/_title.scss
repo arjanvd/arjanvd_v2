@@ -1,0 +1,10 @@
+.l-title {
+    position: relative;
+
+    &__date {
+        position: absolute;
+        top: -#{vr(3)};
+        left: 0;
+        z-index: -1;
+    }
+}

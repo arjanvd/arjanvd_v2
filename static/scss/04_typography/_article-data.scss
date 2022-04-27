@@ -1,0 +1,38 @@
+.t-article-data {
+    font-family: $font-sans;
+    @include vr-type($ms-down1, 4);
+    color: var(--c-text--1000);
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    
+    &--link-date {
+      @extend .t-article-data;
+      @include vr-type($ms-base, 4);
+      color: $carrot-d20; // NOG WIJZIGEN
+      font-weight: 700;
+      text-transform: lowercase;
+      letter-spacing: 0;
+    }
+
+    &--link-source {
+      @extend .t-article-data--link-date;
+      color: var(--c-text--1000);
+      font-weight: 400;
+    }
+
+    &--alt {
+      @extend .t-article-data;
+      @include vr-type($ms-down2, 4);
+    }
+
+    &--snippers {
+      @extend .t-article-data;
+      @include vr-type($ms-down1, 4);
+    }
+
+    &--tag-count {
+      @extend .t-article-data;
+      font-weight: 700;
+      color: var(--c-text--alt);
+    }
+}

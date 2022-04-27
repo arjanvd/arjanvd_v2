@@ -1,0 +1,34 @@
+strong {
+  // NOTE: use bold font-face if available instead of 'font-weight: bold'
+  font-weight: 900;
+}
+
+em, i {
+  // NOTE: use italic font-face if available instead of 'font-style: italic'
+  font-style: italic;
+}
+
+small,
+.small {
+  @include vr-type($ms-down1, 3);
+}
+
+time,
+.time {
+  text-transform: uppercase;
+}
+
+abbr {
+  font-variant: small-caps; 
+  text-transform: lowercase;
+
+  &[title]:hover {
+    // Cursor changed to a question mark when it has a title
+    cursor: help;
+  }
+}
+
+sup {
+  vertical-align: super;
+  @include vr-type($ms-down2, 0);
+}

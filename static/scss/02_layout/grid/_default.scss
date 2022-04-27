@@ -1,0 +1,46 @@
+.g-default {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: vr(2);
+    
+    @include bp(x-small) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include bp(medium) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include bp(x-large) {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    &--medium { // grid for prikkel/list.html
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 1fr;
+        grid-gap: vr(4) vr(8);
+    
+        @include bp(x-large) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @include bp(xx-large) {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+
+    &--small { // grid for 'andere artikelen' at bottom of blog/single.html
+        margin-bottom: vr(6);
+
+        @include bp(x-small) {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: vr(6) vr(6);
+        }
+        @include bp(medium) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+    }
+}

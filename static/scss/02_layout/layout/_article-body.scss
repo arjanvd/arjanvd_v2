@@ -1,0 +1,11 @@
+.l-article-body {
+    position: relative;
+
+        & > * {
+        max-width: 100%;
+
+            &:not(.full):not(.o-figure) {
+                max-width: var(--max-width);
+        }
+    }
+}

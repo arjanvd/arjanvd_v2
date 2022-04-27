@@ -1,0 +1,13 @@
+{{ define "main" }}
+
+<main itemscope itemtype="https://schema.org/AboutPage">
+<meta itemprop="mainEntityOfPage" content="{{ .Permalink }}">
+  <article itemprop="about">
+    <h2 itemprop="headline" class="mb-6 t-h-section">{{ .Title }}</h2>
+    <div itemprop="articleBody" class="t-article-body u-article-body">
+      {{ .Content }}
+    </div>
+  </article>
+</main>
+
+{{ end }}

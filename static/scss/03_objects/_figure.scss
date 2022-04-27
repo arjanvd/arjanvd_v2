@@ -1,0 +1,27 @@
+.o-figure {
+    position: relative;
+    margin-bottom: vr(4);
+
+    & img {
+        margin-bottom: vr(1);
+    }
+
+    & figcaption {
+        @include vr-type($ms-down1, 3);
+        font-family: $font-sans;
+        color: var(--c-text--10); 
+    }
+
+    @include bp(large) {
+        & img {
+            margin: 0;
+            width: var(--max-width);
+        }
+        & figcaption {
+            position: absolute;
+            bottom: 0;
+            left: var(--max-width);
+            margin-left: vr(2);
+        }
+    }
+}

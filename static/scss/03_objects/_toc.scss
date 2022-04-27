@@ -1,0 +1,18 @@
+.o-toc {
+    position: sticky;
+    top: vr(1);
+
+    & li {
+        @include vr-type($ms-down1, 4);
+        list-style-type: disc;
+        margin-left: vr(2.5);
+
+        & ul li {
+            list-style-type: circle;
+
+            & ul li {
+                list-style-type: lower-greek;
+            }
+        }
+    }
+}

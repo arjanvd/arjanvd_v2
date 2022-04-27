@@ -1,0 +1,211 @@
+/* ----------------------------------------------------------------------------
+
+VERTICAL RHYTHM ON A MODULAR SCALE
+
+===============================================================================
+
+A Sass toolkit that sets type in rem's, based on a modular scale while 
+maintaining vertical rhythm. And as a small bonus pixel borders that maintain 
+rhythm.
+
+Github: https://github.com/arjanvd/Vertical-rhythm-on-a-modular-scale
+License: The MIT License (MIT)
+
+Heavily inspired by and used stuff from:
+[x] https://github.com/ianrose/typesettings
+[x] http://alwaystwisted.com/articles/2013-12-30-not-your-average-vertical-rhythm-sass-mixin
+
+---------------------------------------------------------------------------- */
+
+
+
+/* ----------------------------------------------------------------------------
+Modular scale 
+===============================================================================
+
+Sass map
+modularscale.com
+
+---------------------------------------------------------------------------- */
+
+$ms-ratio-map: (
+     ms4-1: 4,             // double octave
+     ms3-1: 3,             // major twelve
+     ms8-3: 2.6666666667,  // major eleventh
+     ms5-2: 2.5,           // major tenth
+     ms2-1: 2,             // octave
+    ms15-8: 1.875,         // major seventh
+    ms16-9: 1.7777777778,  // minor seventh
+     ms5-3: 1.6666666667,  // major sixth
+  msgolden: 1.6180339888,  // golden section
+     ms8-5: 1.6,           // minor sixth
+     ms3-2: 1.5,           // perfect fifth;
+   mssq2-1: 1.4142135623,  // augmented fourth
+     ms4-3: 1.3333333333,  // perfect fourth
+     ms5-4: 1.25,          // major third
+     ms6-5: 1.2,           // minor third
+     ms9-8: 1.125,         // major second
+   ms16-15: 1.0666666667   // minor second
+);
+
+
+
+/* ----------------------------------------------------------------------------
+Configurable variables
+===============================================================================
+
+The config variables have default values that you can adjust at will. Use these 
+variables to customize your settings. But be careful: with great powers come 
+great responsibility.
+
+---------------------------------------------------------------------------- */
+
+/* ----
+Choose a key from $ms-ratio-map above. Check modularscale.com to make an 
+educated choice. 
+---- */
+$ms-ratio: ms4-3;
+
+/* ----
+Set the font-size to a value in rem's. It's advised to leave this at 1rem, 
+while setting a percentage font-size on your html tag (i.e. html { font-size: 
+100%; }). When you need a larger base font-size at higher media queries, only 
+adjust the font-size on the html-tag (i.e. @media (min-width: 600px) { html { 
+font-size: 120%; } }).
+---- */
+$base-font-size: 1rem;
+
+/* ----
+Set the line-height which serves as the base for the vertical rhythm.
+---- */
+$base-line-height: 1.5;
+
+
+/* ----
+Sometimes you need more granular control of the distance between elements than 
+a full $base-line-height. This variable defines that amount of granular 
+control.
+---- */
+$base-line-multi: 4;
+
+
+
+/* ----------------------------------------------------------------------------
+Helper variables
+===============================================================================
+
+The vertical grid unit, set in rem's like font-size. This is the value that 
+determines the baseline for our vertical rhythm. Line-height, margin, and 
+padding are set to multiples of this value. 
+[Note] Do not touch this variable. Just admire its beauty from a distance.
+
+---------------------------------------------------------------------------- */
+
+$base-vr-unit: calc($base-line-height / $base-line-multi) + 0rem; 
+
+
+
+/* ----------------------------------------------------------------------------
+Modular scale calculations
+===============================================================================
+
+Based on the configurable variables $base-font-size and $ms-ratio the modular 
+scale is calculated, both up and down. Each step down divides the previous step 
+with $ms-ratio (i.e. $ms-down2 = $ms-down1 / $ms-ratio). Each step up multi-
+plies the previous step with $ms-ratio (i.e. $ms-up2 = $ms-up1 * $ms-ratio). 
+[Note] This one already goes up to eleven, but if you need more size up then 
+add more sizes. And no, it doesn't go down to eleven. That would be ridiculous.
+
+---------------------------------------------------------------------------- */
+
+$ms-base:  $base-font-size;
+$ms-down1: calc($ms-base / map-get($ms-ratio-map,$ms-ratio));
+$ms-down2: calc($ms-down1 / map-get($ms-ratio-map,$ms-ratio));
+$ms-up1:   $ms-base * map-get($ms-ratio-map,$ms-ratio);
+$ms-up2:   $ms-up1 * map-get($ms-ratio-map,$ms-ratio);
+$ms-up3:   $ms-up2 * map-get($ms-ratio-map,$ms-ratio);
+$ms-up4:   $ms-up3 * map-get($ms-ratio-map,$ms-ratio);
+$ms-up5:   $ms-up4 * map-get($ms-ratio-map,$ms-ratio);
+$ms-up6:   $ms-up5 * map-get($ms-ratio-map,$ms-ratio);
+$ms-up7:   $ms-up6 * map-get($ms-ratio-map,$ms-ratio);
+$ms-up8:   $ms-up7 * map-get($ms-ratio-map,$ms-ratio);
+$ms-up9:   $ms-up8 * map-get($ms-ratio-map,$ms-ratio);
+$ms-up10:  $ms-up9 * map-get($ms-ratio-map,$ms-ratio);
+$ms-up11:  $ms-up10 * map-get($ms-ratio-map,$ms-ratio);
+
+
+
+/* ----------------------------------------------------------------------------
+Mixins and function
+===============================================================================
+
+The mixins and function that make sure that vertical rhythm is maintained. This 
+is where the real magic happens.
+
+---------------------------------------------------------------------------- */
+
+@mixin vr-type($size, $lines: $base-line-multi) {
+  /* ----
+  [1] Generates font-size in rem, based on the given variable (i.e. $ms-up1)
+  [2] Line height function: if a line-height is specified in the mixin by 
+      setting the number of lines other than $base-line-multi, line-height is 
+      calculated in rem's to the specified multiple lines (to maintain vertical 
+      rhythm)
+  [3] Line height function: if the line-height is left, line-height is rounded
+      to a multiple of $base-line-height (to maintain vertical rhythm)
+  ---- */
+  font-size: $size; // [1]
+  @if $lines != $base-line-multi { // [2]
+    line-height: $base-vr-unit * $lines;
+  }
+  @else { // [3]
+    line-height: ceil(calc($size / $base-line-height)) * (calc($base-line-height / $size));
+  }
+}
+
+@function vr($lines: $base-line-multi) {
+  /* ----
+  Returns a rem value that is a multiple of $base-vr-unit. For example: 
+  if $base-vr-unit is 0.75 rem, 3 becomes 2.25 rem. Use this for 
+  consistent margins and paddings to maintain vertical rhythm (i.e. 
+  margin-bottom: vr(3); becomes margin-bottom: 2.25rem;).
+  [Note] Necessity of interpolation of variables: 
+         http://stackoverflow.com/questions/17982111/sass-variable-in-css-calc-function
+  ---- */
+  @if is-int($lines) == false {
+    @warn "#{$lines} + #{$not-integer-txt}";
+  }
+  @return $lines * $base-vr-unit;
+}
+
+@mixin vr-border-top($border-width: 1px, $lines: $base-line-multi) {
+  /* ----
+  Creates a pixel width border top with padding that is a multiple of 
+  $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-top-width: $border-width;
+  padding-top: calc(#{$lines} * #{$base-vr-unit} - #{$border-width});
+}
+
+@mixin vr-border-bottom($border-width: 1px, $lines: $base-line-multi) {
+  /* ----
+  Creates a pixel width border bottom with padding that is a multiple of 
+  $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-bottom-width: $border-width;
+  padding-bottom: calc(#{$lines} * #{$base-vr-unit} - #{$border-width});
+}
+
+@mixin vr-border($border-top-width: 1px, $border-bottom-width: $border-top-width, $lines-top: $base-line-multi / 2, $lines-bottom: $lines-top) {
+  /* ----
+  Creates a pixel width border top and border bottom with padding that are 
+  multiples of $base-vr-unit. 
+  [Note] You will need to set border style and color rules.
+  ---- */
+  border-top-width: $border-top-width;
+  border-bottom-width: $border-bottom-width;
+  padding-top: calc(#{$lines-top} * #{$base-vr-unit} - #{$border-top-width});
+  padding-bottom: calc(#{$lines-bottom} * #{$base-vr-unit} - #{$border-bottom-width});
+}

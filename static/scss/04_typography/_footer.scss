@@ -1,0 +1,29 @@
+.t-footer {
+    font-family: $font-sans;
+    color: var(--c-text--100);
+    
+    p {
+        @include vr-type($ms-down1, 3);
+        margin-bottom: vr(1);
+    }
+
+    a { 
+        border-bottom: 1px solid var(--c-link--data);
+
+        &:hover {
+            color: var(--c-link--data);
+            border-color: var(--c-text);
+        }
+    }
+    
+    &--logo {
+        font-family: $font-display;
+        @include vr-type($ms-base, 3);
+        color: var(--c-logo);
+        font-weight: 652;
+        &__dot {
+            color: $carrot;
+        }
+        //text-transform: uppercase;
+    }
+}
