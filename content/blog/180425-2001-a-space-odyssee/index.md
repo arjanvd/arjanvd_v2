@@ -3,7 +3,7 @@
 title = "2001: A Space Odyssee"
 date = 2018-04-25T09:35:58+02:00 
 tags = [ "film" ] 
-series = [ "elders op het web", "longread" ] 
+series = [ "artikelen" ] 
 draft = false
 summary = "Wat een film. Niet te vaak kijken."
 
