@@ -2,6 +2,10 @@
 {{ $src_url := $img.Permalink }}
 {{ $src := $src_url | strings.TrimRight ".jpg"}}
     <img itemprop="url" class="o-image {{ with .Get "class" }}{{ . }}{{ end }}"
+        srcset="{{ $src }}_S.jpg 640w, 
+        {{ $src }}_M.jpg 768w, 
+        {{ $src }}_L.jpg 1024w, 
+        {{ $src }}_XL.jpg 1200w"
         src="{{ $src }}.jpg" alt="{{ .Get "alt" }}"
         />
     

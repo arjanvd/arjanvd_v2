@@ -2915,6 +2915,26 @@ site.scss
   float: right;
   margin-left: 1.5rem;
 }
+.u-article-body .side, .u-article-body .side--right, .u-article-body .side--left {
+  width: 33%;
+  height: 100%;
+  max-height: 10rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+@media (min-width: 996px) {
+  .u-article-body .side, .u-article-body .side--right, .u-article-body .side--left {
+    width: calc(100% - var(--max-width));
+  }
+}
+.u-article-body .side--left {
+  float: left;
+  margin-right: 1.5rem;
+}
+.u-article-body .side--right {
+  float: right;
+  margin-left: 1.5rem;
+}
 
 /* --------------------------------------------------------------
 

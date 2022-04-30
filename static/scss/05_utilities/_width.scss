@@ -46,5 +46,28 @@
       margin-left: vr(4);
     }
   }
+
+  .side {
+    width: 33%;
+    height: 100%;
+    max-height: 10rem;
+    object-fit: cover;
+
+    @include bp(large) {
+    width: calc(100% - var(--max-width));
+    }
+
+    &--left {
+      @extend .side;
+      float: left;
+      margin-right: vr(4);
+    }
+
+    &--right {
+      @extend .side;
+      float: right;
+      margin-left: vr(4);
+    }
+  }
   
 }

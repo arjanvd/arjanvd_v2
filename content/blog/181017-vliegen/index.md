@@ -9,7 +9,7 @@ summary = "Ik moest om 11.40 uur vliegen en ik werd om 9.47 uur wakker. Ik heb e
 
 +++
 
-{{< image-lightbox--rect src="IMG_0932.jpg" id="181017_1" alt="staart van het Virgin Air vliegtuig" figcaption="" >}}
+{{< image-lightbox--rect src="media/IMG_0932.jpg" id="181017_1" alt="staart van het Virgin Air vliegtuig" figcaption="" >}}
 
 Ik moest om 11.40 uur vliegen en ik werd om 9.47 uur wakker. Ik heb een hotel wel eens rustiger verlaten, maar ik was op tijd.
 
