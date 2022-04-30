@@ -16,4 +16,4 @@ Gelukkig prikken beide interviewers ook door deze quatsch heen en laten ze Henk 
 > **We willen weten hoe u uw rol ziet.**
 > Daar wil ik het niet over hebben. Het gaat me om de andere kant van het verhaal.
 
-Hahaha! Je laten interviewen, maar dan wel alleen de vragen willen krijgen waarop je antwoord wilt geven. Mislukt!
+Hahaha! Je laten interviewen, maar dan wel alleen de vragen willen krijgen waarop je antwoord wilt geven. Wat een tobber.
