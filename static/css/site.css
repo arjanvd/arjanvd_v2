@@ -1571,6 +1571,20 @@ img {
   box-shadow: none;
   opacity: 0.9;
 }
+.o-image--snippers {
+  width: 33%;
+  height: 100%;
+  max-height: 10rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  float: right;
+  margin-left: 1.5rem;
+}
+@media (min-width: 996px) {
+  .o-image--snippers {
+    width: calc(100% - var(--max-width));
+  }
+}
 
 .o-img--cover,
 .o-img--hero {
