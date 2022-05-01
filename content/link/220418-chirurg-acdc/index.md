@@ -1,6 +1,6 @@
 +++
 
-title = "Chirurg Acdc"
+title = "Chirurg ACDC"
 date = 2022-04-18T19:36:09+02:00 
 
 link = 'https://www.rollingstone.co.uk/music/news/surgeons-more-accurate-when-listening-to-ac-dc-research-finds-14647/'

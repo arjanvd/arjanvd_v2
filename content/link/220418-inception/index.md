@@ -1,6 +1,6 @@
 +++
 
-title = "Art Inception"
+title = "Art inception"
 date = 2022-04-18T19:35:24+02:00 
 
 link = 'https://www.boredpanda.com/creative-inception-self-portraits-seamus-wray/'
