@@ -1,0 +1,23 @@
+{{ $img := $.Page.Resources.GetMatch "media/**" }}
+{{ $src_url := $img.Permalink }}
+{{ $src := $src_url | strings.TrimRight ".jpg"}}
+   
+<button class="o-image--button o-image--snippers" data-a11y-dialog-show="modal-{{ .Get "id" }}">
+    <img itemprop="url" src="{{ $src }}_sq.jpg" alt="{{ .Get "alt" }}" />
+</button>
+
+<div class="dialog-container" aria-hidden="true" data-a11y-dialog="modal-{{ .Get "id" }}">
+    <div data-a11y-dialog-hide class="dialog-overlay"></div>
+    <div role="document">
+        <button type="button" data-a11y-dialog-hide aria-label="Close dialog">
+        <div class="o-icon--close"><!-- https://tabler-icons.io close -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z"/><line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/></svg>
+        </div>
+        </button>
+        <figure class="dialog-content">
+            <img itemprop="url" class=""
+                 src="{{ $src }}_v.jpg" alt="{{ .Get "alt" }}" 
+            />
+        </figure>
+    </div>
+    </div>

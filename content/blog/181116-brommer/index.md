@@ -9,7 +9,7 @@ summary = "Een sticker met De Waarheid."
 
 +++
 
-{{< image-lightbox--rect src="IMG_1097.JPG" id="20181116_1" alt="sticker met een brommer waarvan de uitlaat uitlaatgas in het gezicht van de bestuurder blaast" figcaption="" >}}
+{{< image-snippers--small src="media/IMG_1097" id="20181116_1" alt="sticker met een brommer waarvan de uitlaat uitlaatgas in het gezicht van de bestuurder blaast" >}}
 
 Deze sticker bestaat blijkbaar al heel lang, maar ik had ‘m nog nooit gezien. Tot ik vanochtend aan de voet van de Erasmusbrug voor rood licht stond te wachten.
 

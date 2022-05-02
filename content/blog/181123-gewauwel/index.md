@@ -9,7 +9,7 @@ summary = "En ook nog doorspekt met Engels. Ellende."
 
 +++
 
-{{< image-lightbox--rect src="115.jpg" id="181123_1" alt="knipsel van Financieele Dagblad met briljante uitspraken van Kees van Dijkhuizen" figcaption="" >}}
+{{< image-snippers--small src="media/115" id="181123_1" alt="knipsel van Financieele Dagblad met briljante uitspraken van Kees van Dijkhuizen" >}}
 
 De CEO van ABN AMRO, Kees van Dijkhuizen, [heeft gedoetjes](https://www.rtlz.nl/beurs/artikel/4489946/onrust-abn-amro-zelfstandigheid-positie-van-dijkhuizen) met tientallen managers uit de subtop.
 Dat is natuurlijk vervelend voor de beste man, maar hij krijgt gelukkig genoeg ruimte in het FD om daarover z’n onvrede te uiten.

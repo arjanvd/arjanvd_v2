@@ -28,6 +28,6 @@ Vooral de gesprekken over het boek vond ik mooi. Sidekick Stephan Bolt geniet va
 
 Ik was extra geïnteresseerd hoe Krabbé nu op de onvermijdelijke vraag zou reageren wat _De Renner_ probeert te beschrijven. In een aflevering van _Benali Boekt_, [waarover ik hier schreef]({{< ref "blog/171222-de-renner/index.md" >}}), ontkende hij al dat het boek over meer gaat dan de koers. Maar een aarzeling bij die uitspraak liet de deur toch op een kier.
 
-In ‘_Zijn tweeentwintig was nog schoon_’ is die aarzeling weg (vanaf 16:21). Sporza-wielercommentator Michiel Wuyts zou zeggen dat ‘het evident is dat hij zich heeft verdapperd’.
+In ‘_Zijn tweeentwintig was nog schoon_’ is die aarzeling weg (vanaf 16:21 min). Sporza-wielercommentator Michiel Wuyts zou zeggen dat ‘het evident is dat hij zich heeft verdapperd’.
 
 Jammer.

@@ -21,4 +21,4 @@ figcaption = ""
 
 +++
 
-{{< gallery >}}
+{{< gallery-photo >}}

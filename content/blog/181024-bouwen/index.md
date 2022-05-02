@@ -9,6 +9,6 @@ summary = "Lego is altijd leuk. Maar het is extra leuk om iets van Lego te bouwe
 
 +++
 
-{{< image-lightbox--rect src="IMG_1027.jpg" id="181024_1" alt="Skyline van Sydney, gemaakt van Lego" figcaption="" >}}
+{{< image-snippers src="media/IMG_1027" id="181024_1" alt="Skyline van Sydney, gemaakt van Lego" >}}
 
 Lego is altijd leuk. Maar het is extra leuk om iets van Lego te bouwen waar je net bent geweest. (En Mats heeft heel goed meegeholpen.)	

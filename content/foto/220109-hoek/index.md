@@ -19,4 +19,4 @@ alt = 'de Nieuwe Waterweg met aan de overkant de Tweede Maasvlakte, ter hoogte v
 
 +++
 
-{{< gallery >}}
+{{< gallery-photo >}}

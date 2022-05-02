@@ -8,7 +8,7 @@ summary = "In onze fietsgroep is er een nauwelijks stilzwijgende afspraak dat al
 
 +++
 
-{{< image-lightbox--rect src="IMG_1013.jpg" id="181020_1" alt="Rapha store in Sydney" figcaption="" >}}
+{{< image-snippers src="media/IMG_1013" id="181020_1" alt="Rapha store in Sydney" >}}
 
 In onze fietsgroep is er een nauwelijks stilzwijgende afspraak dat als er een Rapha store is, je daar langs moet. Dus dan doe ik dat.
 	

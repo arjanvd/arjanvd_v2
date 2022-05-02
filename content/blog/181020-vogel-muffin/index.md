@@ -9,7 +9,7 @@ summary = "In Rotterdam word je lastig gevallen door duiven en meeuwen — ook w
 
 +++
 
-{{< image-lightbox--rect src="IMG_0980.jpg" id="181020_2" alt="een enge vogel" figcaption="" >}}
+{{< image-snippers src="media/IMG_0980" id="181020_2" alt="een enge vogel" >}}
 
 In Rotterdam word je lastig gevallen door duiven en meeuwen — ook wel zeeduiven genoemd. Maar als je in Sydney iets eet op straat, komen types als deze vogel ook even kijken.
 

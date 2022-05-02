@@ -8,6 +8,6 @@ summary = "Het Ikje op de achterpagina van NRC (next). Soms zelfbevlekkend, gelu
 
 +++
 
-{{< image-lightbox--rect src="IMG_0864.jpg" id="181010_1" alt="krantenknipsel" figcaption="" >}}
+{{< image-snippers--small src="media/IMG_0864" id="181010_1" alt="krantenknipsel" >}}
 
 Het Ikje op de achterpagina van NRC (next). Soms zelfbevlekkend, gelukkig veel vaker scherp observerend en — daardoor — heel grappig. Of, zoals nu, ultiem relativerend.

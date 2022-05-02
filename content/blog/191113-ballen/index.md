@@ -34,7 +34,7 @@ Ik laat het erbij. Het is niet dat dit me doet besluiten er nu nog van af te zie
 
 De arts gaat aan de slag. Hij mompelt wat geruststellende woorden terwijl hij me verdooft. Dan waarschuwt hij me. ‘Nu gaat het even zeer doen.’
 
-Dat doet het. Zoals een geur me onverwachts kan terugbrengen naar het verleden, herinner ik me de grond van de gymzaal van de middelbare school tijdens een potje voetbal.
+Dat doet het. Zoals een geur me onverwachts kan terugbrengen naar het verleden, blijkt pijn dat ook te kunnen. Ik herinner me de grond van de gymzaal van de middelbare school na een onhandige actie van een klasgenoot tijdens een potje voetbal.
 
 De pijnscheut vraagt om een lichamelijke reactie, dus ik kreun en grinnik wat. Dubbelklappen, een beweging die ik vaker gebruik in situaties als deze, lijkt me niet handig. Het gegrinnik is ook van opluchting, merk ik. Dit was het dan.
 
