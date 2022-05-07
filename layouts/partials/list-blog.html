@@ -1,0 +1,17 @@
+<article class="t-article-body--alt">
+    <a href="{{ .RelPermalink }}">
+      <strong>{{ .Title }}</strong> &middot; 
+      <span>
+        {{ .Summary | markdownify }}
+      </span> 
+    </a>
+    {{ $taxonomy := "tags" }}
+    {{ with .Param $taxonomy }}
+      {{ range $index, $tag := . }}
+        {{ if gt $index 0 }} {{ end }}
+        {{ with $.Site.GetPage (printf "/%s/%s" $taxonomy ($tag | anchorize )) }}
+          <a href="{{ .Permalink }}" class="t-link--article-data t-tag">{{ $tag }}</a>
+        {{ end }}
+      {{ end }}
+    {{ end }}   
+  </article>

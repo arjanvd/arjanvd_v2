@@ -3,19 +3,18 @@
 
 {{ .Content }}
 
-{{ $paginator := .Paginate (where .Site.RegularPages "Section" "blog") 8 }}
+{{ $paginator := .Paginate (where .Site.RegularPages "Section" "blog") 48 }}
 
 {{ partial "pagination-list--top.html" (dict "p" $paginator) }}
-
-{{ range $paginator.Pages }}
-  {{ partial "single-blog.html" . }}
-{{ end }}
+<div class="g-blog">
+  {{ range $paginator.Pages }}
+    {{ partial "list-blog.html" . }}
+  {{ end }}
+</div>
 
 {{ partial "pagination-list.html" (dict "p" $paginator) }}
 
 </main>
-
-
 
 {{ end }}
 

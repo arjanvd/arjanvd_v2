@@ -1,6 +1,4 @@
-{{ $img := $.Page.Resources.GetMatch "media/**" }}
-{{ $src_url := $img.Permalink }}
-{{ $src := $src_url | strings.TrimRight ".jpg"}}
+{{ $src := (.Get "src") }}
    
 <button class="o-image--button o-image--snippers" data-a11y-dialog-show="modal-{{ .Get "id" }}">
     <img itemprop="url" src="{{ $src }}_sq.jpg" alt="{{ .Get "alt" }}" />

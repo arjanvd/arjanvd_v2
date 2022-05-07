@@ -1,4 +1,45 @@
 .o-tag {
-  display: inline-block;
-  margin-right: vr(4);
+  position: relative;
+  padding: vr(2);
+  border-radius: vr(1);
+  font-family: $font-sans;
+
+  &:nth-of-type(7n + 1) {
+      background-color: $carrot-l60;
+      border-color: $carrot-l40;
+  }
+  &:nth-of-type(7n + 2) {
+      background-color: $nature-l50;
+      border-color: $nature-l30;
+  }
+  &:nth-of-type(7n + 3) {
+      background-color: $stormy-bay-l40;
+      border-color: $stormy-bay-l20;
+  }
+  &:nth-of-type(7n + 4) {
+      background-color: $nature-l30;
+      border-color: $nature-l10;
+  }
+  &:nth-of-type(7n + 5) {
+      background-color: $stormy-bay-l50;
+      border-color: $stormy-bay-l30;
+  }
+  &:nth-of-type(7n + 6) {
+      background-color: $dark-and-stormy-l60;
+      border-color: $dark-and-stormy-l40;
+  }
+  &:nth-of-type(7n + 7) {
+      background-color: $nature-l40;
+      border-color: $nature-l20;
+  }
+
+  &--count {
+    position: absolute;
+    top: -0.05rem;
+    right: -0.05rem;
+    font-family: $font-serif;
+    font-weight: 700;
+    @include vr-type($ms-up2, 3);
+    color: $nature-l60;
+  }
 }

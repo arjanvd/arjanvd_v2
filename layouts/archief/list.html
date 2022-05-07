@@ -2,52 +2,21 @@
 
 <main itemscope itemtype="https://schema.org/CollectionPage">
 <meta itemprop="mainEntityOfPage" content="{{ .Permalink }}">
-  <article itemprop="about">
-    <h2 itemprop="headline" class="mb-6 t-h-section">{{ .Title }}</h2>
-    <div itemprop="articleBody" class="t-article-body u-article-body">
-      {{ .Content }}
-    </div>
-  </article>
-  
-  <article>
-    <h3>List of tags</h3>
-    <ul class="o-tag">
-      {{ range .Site.Taxonomies.tags }}
-        <li class="o-tag__item mr-4"><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a><span class="t-tag__item--dot">&middot;</span><span class="t-tag__item--count">{{ .Count }}</span></li>
-      {{ end }}
-    </ul>
-  </article>
-  
-  <article>
-    <h3>List of series</h3>
-    <ul class="o-tag">
-      {{ range .Site.Taxonomies.series }}
-        <li class="o-tag__item mr-4"><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a><span class="t-tag__item--dot">&middot;</span><span class="t-tag__item--count">{{ .Count }}</span></li>
-      {{ end }}
-    </ul>
-  </article>
+ 
+  <h2 class="t-h-tag mb-2">Series</h2>
+  <div class="g-archive">
+    {{ range .Site.Taxonomies.series }}
+      <a class="o-tag" href="{{ .Page.Permalink }}">{{ .Page.Title }}<div class="o-tag--count">{{ .Count }}</div></a>
+    {{ end }}
+  </div>
 
-  <ol class="t-article-list" reversed>
-
-{{ $archivelist := (where .Site.Pages "Type" "in" (slice "blog" "foto")) }}
-
-{{ range $archivelist }}
-{{ range (.Data.Pages.GroupByDate "2006") }}
-  <h2 class="l-section t-h-section">{{ .Key }}</h2>
-  {{ range .Pages }}
-    <li class="t-article-list__number"><article>
-      <div class="o-article-list__listitem">
-        <h2 itemprop="headline" class="t-h-blog"><a href="{{ .Permalink }}" itemprop="url mainEntityOfPage" class="t-permlink">{{ .Title }}</a></h2> &middot; <span><a href="/{{ .Section }}" class="t-article-data t-tags-link">{{ .Section }}</a></span>
-      </div></article>
-    </li>
-  {{ end }}
-
-{{ end }}
-{{ end }}
-
-</ol>
+  <h2 class="t-h-tag mb-2">Tags</h2>
+  <div class="g-archive">
+    {{ range .Site.Taxonomies.tags }}
+      <a class="o-tag" href="{{ .Page.Permalink }}">{{ .Page.Title }}<div class="o-tag--count">{{ .Count }}</div></a>
+    {{ end }}
+  </div>
   
 </main>
-
 
 {{ end }}

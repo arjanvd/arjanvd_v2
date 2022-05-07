@@ -9,6 +9,6 @@ summary = "Seizoenstaart bij Dudok."
 
 +++
 
-{{< image-lightbox--rect src="IMG_0779.jpg" id="180905_1" alt="hele lekkere taart" figcaption="" >}}
+{{< image-snippers src="media/IMG_0779" id="180905_1" alt="hele lekkere taart" >}}
 
 De seizoenstaart bij Dudok is Tropical velvet. Dat-ie zo tropisch zou zijn, zag ik niet aankomen. (Maar hij was wel lekker.)

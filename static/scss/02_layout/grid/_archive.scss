@@ -1,0 +1,16 @@
+.g-archive {
+    margin-bottom: vr(10);
+
+    @include bp(x-small) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: vr(4) vr(4);
+    }
+    @include bp(medium) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @include bp(large) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+}

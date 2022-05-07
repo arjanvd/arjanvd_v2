@@ -9,7 +9,7 @@
 
         @include bp(large) {
             grid-template-rows: auto;
-            grid-template-columns: 32rem 1fr;
+            grid-template-columns: var(--max-width) 1fr;
             gap: vr(4);
         }
 

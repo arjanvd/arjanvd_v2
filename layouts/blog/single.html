@@ -40,25 +40,9 @@
 </main>
 <div class="mb-4 t-hr">&nbsp;</div>
 <h2 class="t-h-section mb-4">Andere artikelen</h2>
-<div class="mb-10 g-default--small">
+<div class="g-blog">
   {{ range (shuffle (where (where .Site.RegularPages "Section" "blog") "Title" "!=" .Title)) | first 12 }}
-	  <div class="t-article-body--alt">
-      <a href="{{ .RelPermalink }}">
-        <strong>{{ .Title }}</strong> &middot; 
-        <span>
-          {{ .Summary | markdownify }}
-        </span> 
-      </a>
-      {{ $taxonomy := "tags" }}
-      {{ with .Param $taxonomy }}
-        {{ range $index, $tag := . }}
-          {{ if gt $index 0 }} {{ end }}
-          {{ with $.Site.GetPage (printf "/%s/%s" $taxonomy ($tag | anchorize )) }}
-            <a href="{{ .Permalink }}" class="t-link--article-data t-tag">{{ $tag }}</a>
-          {{ end }}
-        {{ end }}
-      {{ end }}   
-    </div>
-	{{ end }}
+    {{ partial "list-blog.html" . }}
+  {{ end }}
 </div>
 {{ end }}

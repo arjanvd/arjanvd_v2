@@ -4,7 +4,7 @@
         & > * {
         max-width: 100%;
 
-            &:not(.full):not(.o-figure) {
+            &:not(.o-figure):not(.dialog-container) {
                 max-width: var(--max-width);
         }
     }

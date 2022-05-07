@@ -1,9 +1,8 @@
-{{ $img := $.Page.Resources.GetMatch "media/**" }}
-{{ $src_url := $img.Permalink }}
-{{ $src := $src_url | strings.TrimRight ".jpg"}}
+{{ $src := (.Get "src") }}
+
 <figure class="o-figure">
     <img itemprop="url" class="o-image"
-        srcset="{{ $src }}_XXS.jpg 640w, 
+        srcset="{{ $src }}_XXS.jpg 640w,
                 {{ $src }}_XS.jpg 768w,
                 {{ $src }}_S.jpg 1024w,
                 {{ $src }}_M.jpg 1366w,

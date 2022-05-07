@@ -1,104 +1,47 @@
 .g-blog {
-    margin-left: var(--m-side);
-    margin-right: var(--m-side);
-    //max-width: 30rem;
+    margin-bottom: vr(10);
 
-	@include bp(large) {
-		display: grid;
-		grid-template-columns: 
-            [full-start] var(--m-side) 
-            [side-l-start] 11rem
-			[side-l-end main-start] minmax(25rem, 30rem)
-			[main-end side-r-start] 1fr
-			[side-r-end] var(--m-side) [full-end];
-        grid-template-rows: repeat(8,min-content);
-        margin: 0;
-        //max-width: 100%;
+    @include bp(x-small) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: vr(4) vr(4);
     }
-    
-// on single pages
-
-    &__image {
-        height: 15rem;
-        border-right: 1px solid var(--c-border);
-        border-bottom: 1px solid var(--c-border);
-        border-left: 1px solid var(--c-border);
-        
-        @include bp(large) {
-            grid-column: side-l / side-r;
-            grid-row: 1 / 2;
-            max-width: 100%;
-        }
+    @include bp(medium) {
+        grid-template-columns: repeat(3, 1fr);
     }
-
-    &__title, &__data, &__text {
-        max-width: 30rem;
-        margin-left: 0;
-        margin-right: 0;
-
-        @include bp(large) {
-            max-width: 100%;
-        }
+    & article {
+        padding: vr(2);
+        border-width: 1px;
+        border-style: solid;
+        border-radius: vr(1);
     }
-
-    &__title {
-        @include bp(large) {
-            grid-column: side-l / main;
-            grid-row: 2 / 3;
-        }
+    & article:nth-of-type(7n + 1) {
+        background-color: $carrot-l60;
+        border-color: $carrot-l40;
     }
-
-    &__data {
-        @include bp(large) {
-            grid-column: side-l;
-            grid-row: 3 / -1;
-            margin-top: vr(.5);
-            //margin-right: vr(2);
-        }
+    & article:nth-of-type(7n + 2) {
+        background-color: $nature-l50;
+        border-color: $nature-l30;
     }
-
-    &__data--category {
-        
-        @include bp(large) {
-            grid-column: side-l;
-            grid-row: 3 / 4;
-        }
+    & article:nth-of-type(7n + 3) {
+        background-color: $stormy-bay-l40;
+        border-color: $stormy-bay-l20;
     }
-
-    &__data--time {
-
-        @include bp(large) {
-            grid-column: side-l;
-            grid-row: 4 / 5;
-        }
+    & article:nth-of-type(7n + 4) {
+        background-color: $nature-l30;
+        border-color: $nature-l10;
     }
-
-    &__data--words {
-        @include bp(large) {
-            grid-column: side-l;
-            grid-row: 5 / 6;
-        }
+    & article:nth-of-type(7n + 5) {
+        background-color: $stormy-bay-l50;
+        border-color: $stormy-bay-l30;
     }
-
-    &__data--series {
-
-        @include bp(large) {
-            grid-column: side-l;
-            grid-row: 6 / 7;
-        }
+    & article:nth-of-type(7n + 6) {
+        background-color: $dark-and-stormy-l60;
+        border-color: $dark-and-stormy-l40;
     }
-
-    &__data--tags {
-
-        @include bp(large) {
-            grid-column: side-l;
-            grid-row: 7 / 8;
-        }
-    }
-
-    &__text {
-        grid-column: main / side-r;
-		grid-row: 3 / -1;
+    & article:nth-of-type(7n + 7) {
+        background-color: $nature-l40;
+        border-color: $nature-l20;
     }
 
 }

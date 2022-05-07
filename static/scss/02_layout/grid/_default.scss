@@ -29,18 +29,4 @@
             grid-template-columns: repeat(4, 1fr);
         }
     }
-
-    &--small { // grid for 'andere artikelen' at bottom of blog/single.html
-        margin-bottom: vr(6);
-
-        @include bp(x-small) {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-gap: vr(6) vr(6);
-        }
-        @include bp(medium) {
-            grid-template-columns: repeat(3, 1fr);
-        }
-
-    }
 }
