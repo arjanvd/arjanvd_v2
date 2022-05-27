@@ -7,6 +7,11 @@ series = [ "artikelen" ]
 draft = false
 summary = "De wet van de remmende voorsprong én software zorgen ervoor dat een tekst in het Chinees sneller kan worden getypt dan een tekst in het Nederlands. Ja, echt."
 
+image = 'chinees'
+image_alt = 'Chinese characters in a temple'
+credits-link = 'https://unsplash.com/photos/xyIA0tRwpX4'
+credits-name = 'Unsplash'
+
 [[resources]]
   src = "*/naam-bestand.ext"
   title = ""

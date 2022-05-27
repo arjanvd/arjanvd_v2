@@ -5,13 +5,13 @@
         font-family: $font-display;
         font-weight: 652;
         color: var(--c-logo);
-        text-align: center;
+        //text-align: center;
         text-shadow: var(--c-shadow);
     }
 
     &__body {
         @include vr-type($ms-up1, 5);
-        text-align: center;
+        //text-align: center;
     }
 
     &__nav {

@@ -2,7 +2,7 @@
   <ul>
     {{ range .Site.Menus.main }}
             {{ if eq $.Kind "home" }}
-                {{ $.Scratch.Set "active" ($.IsMenuCurrent "main" .) }}
+                {{ $.Scratch.Set "active" ($.HasMenuCurrent "main" .) }}
             {{ else }}
                 {{ $.Scratch.Set "active" (eq .Identifier $.Type) }}
             {{ end }}

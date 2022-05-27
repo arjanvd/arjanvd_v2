@@ -16,7 +16,7 @@
   <ol class="mb-6 t-article-list" reversed>
     {{ range .Pages.ByDate.Reverse }}
     <li class="t-article-list__item">
-      {{ partial "blog-in-list.html" . }}
+      {{ partial "list-archive.html" . }}
     </li>
     {{ end }}
   </ol>
@@ -24,7 +24,7 @@
     <h3 class="t-h-tag mb-2">Foto's</h3>
     <div class="g-photo-grid mb-10">
       {{ range .Pages.ByDate.Reverse }} 
-        {{ partial "photo-in-list.html" . }}
+        {{ partial "list-photo.html" . }}
       {{ end }}
     </div>
   {{ end }}

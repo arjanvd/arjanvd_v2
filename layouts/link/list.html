@@ -4,7 +4,7 @@
 
     {{ $paginator := .Paginate (where .Pages "Section" "link") 1000 }}
     {{ range $paginator.Pages }}
-      {{ partial "article-link.html" . }}
+      {{ partial "single-link.html" . }}
     {{ end }}
     
     {{ partial "pagination-list.html" (dict "p" $paginator) }}

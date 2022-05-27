@@ -14,7 +14,7 @@ Basic styles to h1 - h6
 h1, h2, h3, h4, h5, h6 {
   font-family: $font-serif;
   font-weight: 800;
-  color: var(--c-text);
+  color: var(--c-heading--alt);
   letter-spacing: -0.04em;
 }
 
@@ -31,6 +31,7 @@ h1, h2, h3, h4, h5, h6 {
 .t-h-article-list {
   @include vr-type($ms-base);
   font-weight: 400;
+  letter-spacing: 0;
   display: inline;
 }
 .t-h-section {
@@ -60,7 +61,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .t-h-taxonomy {
   @include vr-type($ms-up3);
-  color: var(--c-heading);
+  color: var(--c-heading--alt--10);
 }
 
 .t-h-blog {

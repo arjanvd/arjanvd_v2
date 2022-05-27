@@ -3,7 +3,7 @@
 title = "Knielen tijdens het Amerikaanse volkslied"
 date = 2017-09-25T09:35:57+02:00 
 tags = [ "identiteit", "sport" ] 
-series = [ "snippers" ] 
+series = [ "artikelen" ] 
 draft = false
 summary = "Over de ongemakkelijke waarheid van _whiteness_."
 

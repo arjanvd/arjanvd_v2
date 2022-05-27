@@ -2,8 +2,7 @@
 
   &--alt {
     @include vr-type($ms-down1, 3);
-    //font-family: $font-sans;
-
+    
     & a:hover { opacity: .7; }
   }
   
@@ -12,7 +11,7 @@
   
   & h2, & h3, & h4, & h5, & h6 {
     font-weight: 700;
-    color: var(--c-text);
+    color: var(--c-heading--alt--10);
   }
   & h2 {
     @include vr-type($ms-up2, 5);
@@ -66,7 +65,6 @@
     & ul {
       list-style: circle;
     }
-
   }
 
   & ol {
@@ -87,7 +85,6 @@
       color: var(--c-link--text--alt);
       border-bottom: 2px solid var(--c-link--text);
     }
-
   }
   
   // Blockquote
@@ -116,18 +113,17 @@
         content: "— ";
       }
     }
-
   }
   
-pre {
-  font-family: $font-mono;
+  pre {
+    font-family: $font-mono;
     @include vr-type($ms-down1, 4);
     color: var(--c-text);
     background-color: var(--bg-code--inline); 
     padding: .25em;
     border-radius: .25em;
     margin-bottom: vr(4);
-}
+  }
 
   code {
     font-family: $font-mono;
@@ -138,22 +134,40 @@ pre {
     border-radius: .25em;
   }
 
-  p.footnote {
+  .footnotes ol {
     @include vr-type($ms-down1, 3);
-    font-family: $font-sans;
+    font-family: $font-serif;
     color: var(--c-text--10);
-    margin-bottom: vr(.5); 
+    list-style: decimal;
+    
+    & li {
+        margin-bottom: vr(.5);
+    }
+    
+    & li::marker {
+        @include vr-type($ms-down2);
+        font-family: $font-sans;
+    }
+
+    &::after {
+      content: '';
+      width: 100%;
+      height: 1px;
+      //background: rgb(227,219,205); // var(--c-border--light)
+      background: linear-gradient(90deg, rgba(227,219,205,1) 0%, rgba(227,219,205,1) 20%, rgba(227,219,205,0) 20%, rgba(227,219,205,0) 100%);
+      display: block;
+      margin: vr(4) 0 vr(4) -#{vr(2.5)};
+    }
   }
-  sup a { border: none; }
 
   hr {
     border: 0;
     width: 100%;
     height: 1px;
-    background: rgb(227,219,205); // var(--c-border--light)
+    //background: rgb(227,219,205); // var(--c-border--light)
     background: linear-gradient(90deg, rgba(227,219,205,1) 0%, rgba(227,219,205,1) 20%, rgba(227,219,205,0) 20%, rgba(227,219,205,0) 100%);
     display: block;
-    margin-bottom: vr(4);
+    margin: vr(8) 0 vr(4);
   } 
 
 }

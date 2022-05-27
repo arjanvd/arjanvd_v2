@@ -11,7 +11,11 @@
         }
     }
     &--artikelen {
-        &:hover  { background: var(--bg-link); }
+        border-bottom: 1px solid var(--c-link--data);
+        &:hover  { 
+            color: var(--c-link--data--alt); 
+            border-bottom: 1px solid var(--c-text--100); 
+        }
     }
     &--image {
         display: block;

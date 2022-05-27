@@ -2,10 +2,10 @@
 
 title =  "Goed voor m’n karma"
 date = 2018-12-04T22:56:40+02:00
-series = [ "snippers" ] 
+series = [ "snippers", "rimpelingen" ] 
 tags = [ "fiets", "regen" ] 
 draft = false
-summary = ""
+summary = "Regen. Op de fiets."
 
 +++
 

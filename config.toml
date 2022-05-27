@@ -60,3 +60,13 @@ summaryLength = 20
     title = "archive section"
     url = "/archief/"
     weight = 50  
+
+[privacy]
+  [privacy.twitter]
+    disable = false
+    enableDNT = true
+    simple = true
+
+[services]
+  [services.twitter]
+    disableInlineCSS = true

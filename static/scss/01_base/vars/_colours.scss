@@ -31,23 +31,23 @@ $nocturne: #334756;
 $trapped-darkness: #082032;
 $black-sheep: #0f0f0f;
 
-// Lighten (by increasing luminance on hue.tools)
-// steps of 8%                      steps of 11%                   steps of 14%
-$mad-for-mango-l10: #ffb71a;      $nocturne-l10: #486479;      $trapped-darkness-l10: #124770;
-$mad-for-mango-l20: #ffc443;      $nocturne-l20: #5d819c;      $trapped-darkness-l20: #1c6fad;
-$mad-for-mango-l30: #ffd16b;      $nocturne-l30: #7f9cb3;      $trapped-darkness-l30: #3294de;
-$mad-for-mango-l40: #ffde94;      $nocturne-l40: #a2b7c8;      $trapped-darkness-l40: #70b4e8;
-$mad-for-mango-l50: #ffeabd;      $nocturne-l50: #c5d2dd;      $trapped-darkness-l50: #add4f2;
-$mad-for-mango-l60: #fff7e6;      $nocturne-l60: #e8edf1;      $trapped-darkness-l60: #ebf4fc;
+// Lighten (tint palette on https://fffuel.co/pppalette/)
 
-// Darken (by decreasing brightness on hue.tools)
-// steps of 8%                      steps of 5%                    steps of 2%
-$mad-for-mango-d10: #c78900;      $nocturne-d10: #2a3a46;      $trapped-darkness-d10: #071a29;
-$mad-for-mango-d20: #9e6d00;      $nocturne-d20: #202d36;      $trapped-darkness-d20: #051520;
-$mad-for-mango-d30: #765100;      $nocturne-d30: #171f26;      $trapped-darkness-d30: #040f18;
-$mad-for-mango-d40: #4d3500;      $nocturne-d40: #0d1216;      $trapped-darkness-d40: #02090f;
-$mad-for-mango-d50: #241900;      $nocturne-d50: #040506;      $trapped-darkness-d50: #010406;
+$mad-for-mango-l10: #f0a400;      $nocturne-l10: #334757;      $trapped-darkness-l10: #081f30;
+$mad-for-mango-l20: #f7b343;      $nocturne-l20: #526371;      $trapped-darkness-l20: #2f3f4e;
+$mad-for-mango-l30: #fdc16b;      $nocturne-l30: #73808b;      $trapped-darkness-l30: #55616f;
+$mad-for-mango-l40: #ffd090;      $nocturne-l40: #949ea7;      $trapped-darkness-l40: #7d8691;
+$mad-for-mango-l50: #ffe0b5;      $nocturne-l50: #b7bdc4;      $trapped-darkness-l50: #a6adb4;
+$mad-for-mango-l60: #ffefda;      $nocturne-l60: #dadee1;      $trapped-darkness-l60: #d2d5d9;
 
+// Darken (shade pallette on https://fffuel.co/pppalette/)
+
+$mad-for-mango-d10: #f0a400;      $nocturne-d10: #334756;      $trapped-darkness-d10: #081f30;
+$mad-for-mango-d20: #ca8400;      $nocturne-d20: #283c4b;      $trapped-darkness-d20: #041b2c;
+$mad-for-mango-d30: #a56600;      $nocturne-d30: #1d313f;      $trapped-darkness-d30: #001828;
+$mad-for-mango-d40: #824900;      $nocturne-d40: #122735;      $trapped-darkness-d40: #001424;
+$mad-for-mango-d50: #622c00;      $nocturne-d50: #071d2a;      $trapped-darkness-d50: #000f21;
+$mad-for-mango-d60: #481000;      $nocturne-d60: #001320;      $trapped-darkness-d60: #000a1d;
 
 
 

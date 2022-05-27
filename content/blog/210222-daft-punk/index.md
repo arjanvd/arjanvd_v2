@@ -1,10 +1,10 @@
 +++
 
-title = "210222 Daft Punk"
-date = 2022-04-19T16:46:58+02:00 
-tags = [] 
-series = [] 
-summary = ''
+title = "Daft Punk stopt"
+date = 2021-02-22T16:46:58+02:00 
+tags = [ "muziek" ] 
+series = [ "snippers" ] 
+summary = 'Heel jammer.'
 draft = false
 
 image = ''
@@ -17,3 +17,7 @@ figcaption = ''
 
 
 +++
+
+{{< youtube id="DuDX6wNfjqc" >}}
+
+Dat vind ik heel jammer.

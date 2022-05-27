@@ -1,0 +1,20 @@
+<article class="o-image--button">
+    <a href="{{.RelPermalink}}" itemprop="url mainEntityOfPage" class="o-icon--gallery-anchor">  
+  
+      {{ $thumbnail := .Resources.GetMatch "*_sq.jpg" }}
+      <img 
+        itemprop="url" 
+        src="{{ $thumbnail.RelPermalink }}" 
+        alt="{{ with $.Param "image_alt" }}{{ . }}{{ else }}{{ .Title }}{{ end }}" 
+      />
+      {{ with $.Param "gallery" }}
+        {{ if eq . true }}
+        <div class="o-icon--gallery"><!-- https://tabler-icons.io copy -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke="none" d="M0 0h24v24H0z"/><rect width="12" height="12" x="8" y="8" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg>
+        </div>
+        {{ end }}
+      {{ end }}
+    </a>
+   
+  </article>
+  
